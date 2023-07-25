@@ -6,7 +6,7 @@
 #    By: angela <angela@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/24 22:57:11 by angela            #+#    #+#              #
-#    Updated: 2023/06/25 17:05:02 by angela           ###   ########.fr        #
+#    Updated: 2023/07/24 23:50:09 by angela           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,9 @@ SRC				=	./src/main.c \
 					./src/ft_printf/s_c_p_d_i.c \
 				 	./src/ft_printf/u_x_X.c \
 					./src/check_errors.c \
-					./src/utils.c
+					./src/utils.c \
+					./src/ft_split.c \
+					./init/init_list.c
 					
 				 
 LIB				= ./includes/push_swap.h

@@ -6,7 +6,7 @@
 /*   By: angela <angela@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/24 23:13:27 by angela            #+#    #+#             */
-/*   Updated: 2023/06/25 17:09:01 by angela           ###   ########.fr       */
+/*   Updated: 2023/07/25 00:35:31 by angela           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,12 @@ int check_errors(int ac, char **av)
 				return(p_error());
 		}
 	}
-	else
-		return (p_error());
+	// else if (ac == 2)
+	// {
+		
+	// }
+	// else
+	// 	return (p_error());
 }
 
 int	check_isnumber(char *str)

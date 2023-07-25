@@ -6,7 +6,7 @@
 /*   By: angela <angela@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 14:28:00 by angnguye          #+#    #+#             */
-/*   Updated: 2023/07/04 14:59:41 by angela           ###   ########.fr       */
+/*   Updated: 2023/07/22 17:09:47 by angela           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,9 @@
 # include <stddef.h>
 # include "push_swap.h"
 
-typedef struct	List //list chainé
-{
-    Node* head;
-    Node* tail;
-}				List;
-
-typedef struct	Node
-{
-    int value;
-    struct Node* next;
-}				Node;
+/*◇───────────────────────────────────────────────────────────────◇*\
+* 	Prototypes funtions
+\*◇───────────────────────────────────────────────────────────────◇*/
 
 int		ft_isalpha(int c);
 int		ft_isalnum(int c);
