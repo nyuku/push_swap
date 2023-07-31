@@ -6,7 +6,7 @@
 #    By: angela <angela@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/24 22:57:11 by angela            #+#    #+#              #
-#    Updated: 2023/07/24 23:50:09 by angela           ###   ########.fr        #
+#    Updated: 2023/07/31 00:12:16 by angela           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,7 @@
 NAME			= push_swap
 RM				= rm -f
 CC				= gcc
+
 # ---------------- Color --------------
 GREEN			=		\033[1;32m
 DARKGRAY		=		\033[1;30m
@@ -25,7 +26,7 @@ LILAC			= 		\033[0;94m
 ENDCOLOR		=		\033[0m
 
 # ---------------- FLAGS --------------
-CFLAGS			= -Wall -Wextra -Werror -g  -w #-fsanitize=address
+CFLAGS			= -Wall -Wextra -Werror #-fsanitize=address
 
 # ---------------- Sources -----------
 SRC				=	./src/main.c \
@@ -34,7 +35,6 @@ SRC				=	./src/main.c \
 				 	./src/ft_printf/u_x_X.c \
 					./src/check_errors.c \
 					./src/utils.c \
-					./src/ft_split.c \
 					./init/init_list.c
 					
 				 
@@ -44,17 +44,36 @@ LIB				= ./includes/push_swap.h
 # ---------------- Objets -----------
 OBJS			= ${SRC:.c=.o}
 
+
+# --------------- LIBFT --------------------
+
+LIBFT			=		./libft/libft.a
+MLIBFT			=		@$(MAKE) -C libft
+
+#lib:
+#			@$(MLIBFT) all
+#			@$(END_COMP_LIB_TXT)
+
 # --------------- Regles --------------------
 
-all:			${NAME}	
+all:			${NAME} lib
+
+lib:
+			@$(MLIBFT)
+			
+%.o:		%.c ./libft/libft.h Makefile
+			@$(CC) $(CFLAGS) -c $< -o $@
+			@$(CHARG_LINE_TXT)
 
 ${NAME}:		${OBJS}
-				@${CC} ${CFLAGS} -o ${NAME} ${OBJS} 
+				@make -C libft
+				@${CC} ${CFLAGS} -o ${NAME} ${OBJS} ${LIBFT}
+				@echo "$(GREEN)Compilation of push_swap is done!🚀$(ENDCOLOR)"
 
 rleak:
 				@leaks --atExit -- ./${NAME}
-.c.o:
-				@${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
+#.c.o:
+#				@${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
 
 # --------------- VISUEL --------------------
 BS_TXT			= echo "\n\n\n\n"
@@ -93,4 +112,4 @@ norm :
 				@echo "$(PURPLE)Nooooorminetto$(ENDCOLOR)"
 				@$(BS_TXT)
 
-.PHONY : all clean fclean re norm leaks rel
+.PHONY : all clean fclean re norm leaks rel libft

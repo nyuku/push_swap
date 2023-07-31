@@ -6,7 +6,7 @@
 /*   By: angela <angela@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 22:19:08 by angela            #+#    #+#             */
-/*   Updated: 2023/07/25 13:30:18 by angela           ###   ########.fr       */
+/*   Updated: 2023/07/31 16:00:05 by angela           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,39 +15,66 @@
 
 int	main(int ac, char **av)
 {
-	t_pushswap pushswap;
+	t_pushswap ps;
 
 	// if (check_errors(ac, av) == ERROR); // or "if (!check_errors(ac, av)) return (0);"
 	// 	return (ERROR);
+	ps.multi_arg = 0;
+	ps.mono_arg = 0;
+	check_all_arg(av, ac, &ps);
+	// if (ps.mono_arg != 0)
+	// 	printf("nombre d'arguments en mono %d\n", ps.mono_arg);
+	// else if (ps.multi_arg != 0)
+	// 	printf("nombre d'arguments en moulti %d\n", ps.multi_arg);
+	init_list(&ps);
+	fill_list(&ps);
+	print_nodes(&ps);
+	free_nodes(&ps);
+	return (0);
+	
+}
+
+void check_all_arg(char **av, int ac, t_pushswap *ps)
+{
 	if (ac == 2)
 	{
-		if (check_mono_arg(av, &pushswap) != 0)
+		if (check_mono_arg(av, ps) != 0)
 		{
-			printf("c'est que des nombres\n");
-			printf("nombre d'arguments : %d\n", check_mono_arg(av, &pushswap));
+			printf("mono, c'est que des nombres\n");
+			printf("check_mono_arg d'arguments : %d\n", check_mono_arg(av, ps));
+			ps->mono_arg = check_mono_arg(av, ps);
 		}
 		
 		else 
-			printf("c'est faux\n");
+			printf("c'est faux mono\n");
 	}
-	else
-		return (0);// un seul argument	
+	else if (ac > 2)
+	{
+		if (check_multi_arg(av, ac)!= 0)// un seul argument	
+		{
+			printf("multi,c'est que des nombres\n");
+			ps->multi_arg = check_multi_arg(av, ac);
+			printf("check_multi_arg d'arguments : %d\n", check_multi_arg(av, ac));
+		}
+		else 
+			printf("c'est faux multi\n");
+	}
 }
 
 //check si des nombres, retourne le nombre d'arguments. sinon return 0
-int check_mono_arg(char **av, t_pushswap *pushswap)
+int check_mono_arg(char **av, t_pushswap *ps)
 {
 	int i;
 	int result;
 	
 	i = 0;
 	result = 0;
-	pushswap->tab_args_number = ft_split(av[1], ' '); // on utilise split pour isoler les nombres
+	ps->tab_args_number = ft_split(av[1], ' '); // on utilise split pour isoler les nombres
 	//ici checl si un seul argument.
 	
-	while (pushswap->tab_args_number[i]) // on parcout ce qu'on a obtenu pour verifier si c'est des nombres, case par case
+	while (ps->tab_args_number[i]) // on parcout ce qu'on a obtenu pour verifier si c'est des nombres, case par case
 	{
-		if (check_if_number(pushswap->tab_args_number[i]) == 1)
+		if (check_if_number(ps->tab_args_number[i]) == 1)
 		{
 			result++;
 			i++;
@@ -55,12 +82,19 @@ int check_mono_arg(char **av, t_pushswap *pushswap)
 		else
 			return (0);
 	}
-	if (result == 0 || i == 1)
+	if (result == 0 || i == 1) // ok
 	{
 		printf("marche po. il z a un seul arguement chiffre\n");
 		return (0);
 	}
-		
+	
+	// while (i > 0)
+	// {
+	// 	free(ps->tab_args_number[i]);
+	// 	i++;
+	// }
+	// free(ps->tab_args_number);
+	
 	return (result);
 }
 
@@ -83,4 +117,24 @@ int check_if_number(char *str)
 			return (0);
 	}
 	return (1);
+}
+
+int check_multi_arg(char **argv, int argc)
+{
+	int result;
+	int i;
+
+	result = 0;
+	i = 1;
+	while (i < argc)
+	{
+		if (check_if_number(argv[i]) == 1)
+		{
+			result++;
+			i++;
+		}
+		else
+			return (0);
+	}
+	return (result);
 }

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: angnguye <angnguye@student.42.fr>          +#+  +:+       +#+         #
+#    By: angela <angela@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/29 13:55:51 by angnguye          #+#    #+#              #
-#    Updated: 2022/12/07 21:55:12 by angnguye         ###   ########.fr        #
+#    Updated: 2023/07/31 00:11:54 by angela           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,7 +52,7 @@ NAME		= libft.a
 all:			$(NAME)
 
 $(NAME):	$(OBJS)
-				ar rcs $(NAME) $(OBJS)
+				@ar rcs $(NAME) $(OBJS)
 
 
 clean:

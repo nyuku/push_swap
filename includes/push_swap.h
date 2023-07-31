@@ -6,7 +6,7 @@
 /*   By: angela <angela@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/24 22:40:48 by angela            #+#    #+#             */
-/*   Updated: 2023/07/25 00:13:16 by angela           ###   ########.fr       */
+/*   Updated: 2023/07/31 15:57:00 by angela           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,10 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <limits.h>
+# include <stdio.h>
 # include <stdbool.h>
-# include "libft.h"
+
+# include "../libft/libft.h"
 # include "ft_printf.h"
 
 # define ERROR      0
@@ -28,41 +30,38 @@
 \*◇───────────────────────────────────────────────────────────────◇*/
 typedef struct    s_node
 {
-    int          data;
-    struct s_node *next;
+    int             data;
+    struct s_node   *next;
+
 }                t_node;
-
-
-
-
-// typedef struct	Node
-// {
-//     int value;
-//     struct Node* next;
-// }				Node;
-
-// typedef struct	List //list chainé
-// {
-//     Node* head;
-//     Node* tail;
-// }				List;
 
 
 typedef struct	s_pushswap
 {
-    int number_arg;
-    char **tab_args_number;
+    int     number_arg;
+    char    **tab_args_number;
+    int     multi_arg;
+    int		mono_arg;
+	t_node	*head;
+	t_node	*tail;
 }				t_pushswap;
 
 
 /*◇───────────────────────────────────────────────────────────────◇*\
 * 	Prototypes funtions
 \*◇───────────────────────────────────────────────────────────────◇*/
-int check_mono_arg(char **av, t_pushswap *pushswap);
-int check_if_number(char *str);
-void	*ft_memset(void *p, int c, size_t len);
-void	*ft_calloc(size_t count, size_t size);
-char	**ft_split(char const *s, char c);
+int 	check_mono_arg(char **av, t_pushswap *ps);
+int 	check_multi_arg(char **argv, int argc);
+void 	check_all_arg(char **av, int ac, t_pushswap *ps);
+int 	check_if_number(char *str);
+
+
+void init_list(t_pushswap *ps);//madre
+void fill_list(t_pushswap *ps);
+void    print_nodes(t_pushswap *ps);
+t_node *node_init();
+void    free_nodes(t_pushswap *ps);
+
 /*◇───────────────────────────────────────────────────────────────◇*\
 * 	check_error.c
 \*◇───────────────────────────────────────────────────────────────◇*/
