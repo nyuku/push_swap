@@ -6,7 +6,7 @@
 /*   By: angela <angela@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 22:19:08 by angela            #+#    #+#             */
-/*   Updated: 2023/07/31 16:00:05 by angela           ###   ########.fr       */
+/*   Updated: 2023/08/03 15:11:52 by angela           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,125 +16,33 @@
 int	main(int ac, char **av)
 {
 	t_pushswap ps;
-
-	// if (check_errors(ac, av) == ERROR); // or "if (!check_errors(ac, av)) return (0);"
-	// 	return (ERROR);
 	ps.multi_arg = 0;
 	ps.mono_arg = 0;
-	check_all_arg(av, ac, &ps);
-	// if (ps.mono_arg != 0)
-	// 	printf("nombre d'arguments en mono %d\n", ps.mono_arg);
-	// else if (ps.multi_arg != 0)
-	// 	printf("nombre d'arguments en moulti %d\n", ps.multi_arg);
-	init_list(&ps);
+	check_all_arg(av, ac, &ps);//mono arg et multi
+    if (ps.mono_arg != 0 && ac == 2)
+    {
+        ps.number_numbers = ps.mono_arg;
+    }
+    else if (ac > 2)
+    {
+        ps.number_numbers = ps.multi_arg;
+    }
+
+    init_list(&ps);
 	fill_list(&ps);
+	
 	print_nodes(&ps);
+    printf("\n------------------\n");
+
+//	swap(&(ps.head));
+	rotate_up(&(ps.head_a));
+//    reverse_rotate(&(ps.head));
+
+    print_nodes(&ps);
+
 	free_nodes(&ps);
+	free_structure(&ps);
+	printf("🍕 Ciao Ciao Ciao Ciao Ciao Ciao Ciao Ciao 🍕 \n");
 	return (0);
 	
-}
-
-void check_all_arg(char **av, int ac, t_pushswap *ps)
-{
-	if (ac == 2)
-	{
-		if (check_mono_arg(av, ps) != 0)
-		{
-			printf("mono, c'est que des nombres\n");
-			printf("check_mono_arg d'arguments : %d\n", check_mono_arg(av, ps));
-			ps->mono_arg = check_mono_arg(av, ps);
-		}
-		
-		else 
-			printf("c'est faux mono\n");
-	}
-	else if (ac > 2)
-	{
-		if (check_multi_arg(av, ac)!= 0)// un seul argument	
-		{
-			printf("multi,c'est que des nombres\n");
-			ps->multi_arg = check_multi_arg(av, ac);
-			printf("check_multi_arg d'arguments : %d\n", check_multi_arg(av, ac));
-		}
-		else 
-			printf("c'est faux multi\n");
-	}
-}
-
-//check si des nombres, retourne le nombre d'arguments. sinon return 0
-int check_mono_arg(char **av, t_pushswap *ps)
-{
-	int i;
-	int result;
-	
-	i = 0;
-	result = 0;
-	ps->tab_args_number = ft_split(av[1], ' '); // on utilise split pour isoler les nombres
-	//ici checl si un seul argument.
-	
-	while (ps->tab_args_number[i]) // on parcout ce qu'on a obtenu pour verifier si c'est des nombres, case par case
-	{
-		if (check_if_number(ps->tab_args_number[i]) == 1)
-		{
-			result++;
-			i++;
-		}
-		else
-			return (0);
-	}
-	if (result == 0 || i == 1) // ok
-	{
-		printf("marche po. il z a un seul arguement chiffre\n");
-		return (0);
-	}
-	
-	// while (i > 0)
-	// {
-	// 	free(ps->tab_args_number[i]);
-	// 	i++;
-	// }
-	// free(ps->tab_args_number);
-	
-	return (result);
-}
-
-//retourne 1 si ok
-//on parcout la str pour verifier si c'est un nombre (!)au neg
-int check_if_number(char *str)
-{
-	int i;
-
-	i = 0;
-	if (!str[i])
-		return (0);
-	if (str[i] == '-')
-		i++;
-	while (str[i])
-	{
-		if ((str[i] >= '0' && str[i] <= '9'))
-			i++;
-		else
-			return (0);
-	}
-	return (1);
-}
-
-int check_multi_arg(char **argv, int argc)
-{
-	int result;
-	int i;
-
-	result = 0;
-	i = 1;
-	while (i < argc)
-	{
-		if (check_if_number(argv[i]) == 1)
-		{
-			result++;
-			i++;
-		}
-		else
-			return (0);
-	}
-	return (result);
 }

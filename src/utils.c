@@ -12,6 +12,23 @@
 
 #include "../includes/push_swap.h"
 
+void    print_nodes(t_pushswap *ps)// print la liste
+{
+    int i;
+    t_node *current_node;
+
+    current_node = ps->head_a;
+    i = 0;
+
+    while (current_node!= NULL)//ici changer , avant current_node ->next
+    {
+        printf("node(%d)->data = %d\n", i, current_node->data);
+        //printf ("adresse du node %p\n", current_node->next);
+        current_node = current_node->next;
+        i++;
+    }
+}
+
 long	ft_atol(const char *nptr)
 {
 	long		i;

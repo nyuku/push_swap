@@ -6,7 +6,7 @@
 #    By: angela <angela@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/24 22:57:11 by angela            #+#    #+#              #
-#    Updated: 2023/07/31 00:12:16 by angela           ###   ########.fr        #
+#    Updated: 2023/08/01 13:26:09 by angela           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,9 @@ LILAC			= 		\033[0;94m
 ENDCOLOR		=		\033[0m
 
 # ---------------- FLAGS --------------
-CFLAGS			= -Wall -Wextra -Werror #-fsanitize=address
+CFLAGS			= -Wall -Wextra -Werror 
+NUMTEST			= "4 1 3 5"
+DEBUG			= -fsanitize=address -g3
 
 # ---------------- Sources -----------
 SRC				=	./src/main.c \
@@ -35,7 +37,11 @@ SRC				=	./src/main.c \
 				 	./src/ft_printf/u_x_X.c \
 					./src/check_errors.c \
 					./src/utils.c \
-					./init/init_list.c
+					./src/check.c \
+					./init/init_list.c \
+					./src/operation/swap.c \
+					./src/operation/rotate.c \
+					./src/operation/reverse_rotate.c
 					
 				 
 LIB				= ./includes/push_swap.h
@@ -67,11 +73,13 @@ lib:
 
 ${NAME}:		${OBJS}
 				@make -C libft
+				@${CC} ${CFLAGS} ${DEBUG} -o ${NAME} ${OBJS} ${LIBFT}
 				@${CC} ${CFLAGS} -o ${NAME} ${OBJS} ${LIBFT}
+
 				@echo "$(GREEN)Compilation of push_swap is done!🚀$(ENDCOLOR)"
 
 rleak:
-				@leaks --atExit -- ./${NAME}
+				@leaks --atExit -- ./${NAME} ${NUMTEST}
 #.c.o:
 #				@${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
 

@@ -6,7 +6,7 @@
 /*   By: angela <angela@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/24 22:40:48 by angela            #+#    #+#             */
-/*   Updated: 2023/07/31 15:57:00 by angela           ###   ########.fr       */
+/*   Updated: 2023/08/03 15:11:30 by angela           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,17 @@ typedef struct	s_pushswap
     char    **tab_args_number;
     int     multi_arg;
     int		mono_arg;
-	t_node	*head;
+    int     number_numbers;
+
+	t_node	*head_a;
+    t_node	*head_b;
+
 	t_node	*tail;
+    t_node  *stack_a;
+    int     size_a;
+    t_node  *stack_b;
+    int     size_b;
+    
 }				t_pushswap;
 
 
@@ -56,12 +65,13 @@ void 	check_all_arg(char **av, int ac, t_pushswap *ps);
 int 	check_if_number(char *str);
 
 
-void init_list(t_pushswap *ps);//madre
-void fill_list(t_pushswap *ps);
+void    init_list(t_pushswap *ps);//madre
+void    fill_list(t_pushswap *ps);
 void    print_nodes(t_pushswap *ps);
-t_node *node_init();
+t_node  *node_init();
 void    free_nodes(t_pushswap *ps);
 
+void print_list(t_node *head);
 /*◇───────────────────────────────────────────────────────────────◇*\
 * 	check_error.c
 \*◇───────────────────────────────────────────────────────────────◇*/
@@ -74,8 +84,19 @@ int check_int_limit(char *str);
 \*◇───────────────────────────────────────────────────────────────◇*/
 int p_error();
 long	ft_atol(const char *nptr);
+void	free_structure(t_pushswap *ps);
+/*◇───────────────────────────────────────────────────────────────◇*\
+* 	Rules
+\*◇───────────────────────────────────────────────────────────────◇*/
+void   swap(t_node **node);
+void    rotate_up(t_node **head);
+void    reverse_rotate(t_node **head);
 
- 
+void double_swap(t_node **node_a, t_node **node_b);
+/*◇───────────────────────────────────────────────────────────────◇*\
+* 	Liste
+\*◇───────────────────────────────────────────────────────────────◇*/
+t_node	*last_node(t_node *head);
 
 
 #endif

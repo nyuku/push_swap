@@ -14,5 +14,5 @@
 //mise en place de la stucture
 
 
-void init_list(List* list);
-t_lst	*create_lst(int ac, char **av)
+//void init_list(List* list);
+//t_lst	*create_lst(int ac, char **av)
