@@ -12,16 +12,7 @@
 
 #include "../includes/push_swap.h"
 
-//fonction pour aller a la fin, retourne le dernier node
 
-t_node	*last_node(t_node *head)
-{
-    if (!head)//secu si existe pas
-        return (NULL);
-    while (head->next != NULL) // tant que le pointeur du prochain n'est pas null, donc pas fin
-        head = head->next; // passe au prochain
-    return (head); //retourne l'adresse du node et pas du pointeur
-}
 
 //on va jusqu a la fin de la liste et on ajoute le 1er node
 // [node1] -> [node2] -> [node3] -> [node4] -> [node5] avant <--- push
@@ -42,6 +33,12 @@ void    rotate_up(t_node **head)
     node_1->next = NULL; // move 3
     //end->data = node_1->data;
 
+}
+
+void double_rotate(t_node **node_a,t_node **node_b)
+{
+	rotate_up(node_a);
+	rotate_up(node_b);
 }
 
 

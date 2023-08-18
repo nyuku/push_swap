@@ -41,7 +41,9 @@ SRC				=	./src/main.c \
 					./init/init_list.c \
 					./src/operation/swap.c \
 					./src/operation/rotate.c \
-					./src/operation/reverse_rotate.c
+					./src/operation/reverse_rotate.c \
+					./src/operation/push.c \
+					./src/sorting/sorting_3.c
 					
 				 
 LIB				= ./includes/push_swap.h

@@ -23,34 +23,43 @@ t_node *node_init()// un node a la fois, utils
     if (node == NULL)
         return (NULL);
     node->next = NULL;
+	node->index = NULL;//new
     return (node);
 }
 
 void init_list(t_pushswap *ps)//madre, cree la liste
    {
         int i = 0;
-        t_node *previous_node = NULL;
-        t_node *current_node;
+        t_node *previous_node_a = NULL;
+	    t_node *previous_node_b = NULL;
+        t_node *current_node_a;
+        t_node *current_node_b;// modifie en doublant tout
 
 
         while (i < ps->number_numbers)
         {
-            current_node = node_init(); // Crée un nouveau nœud
-            current_node->next = NULL; // Initialise next à NULL
+            current_node_a = node_init(); // Crée un nouveau nœud
+	        current_node_b = node_init();
 
-            if (previous_node == NULL)
+//            current_node_a->next = NULL; // Initialise next à NULL
+//	        current_node_b->next = NULL;
+
+            if (previous_node_a == NULL || previous_node_b == NULL)// si on est au 1er node
             {
-                ps->head_a = current_node; // Enregistre l'adresse du premier nœud
+                ps->head_a = current_node_a; // Enregistre l'adresse du premier nœud
+	            ps->head_b = current_node_b;// ca marche pour le while...?
             }
             else
             {
-                previous_node->next = current_node; // Relie le nœud précédent au nouveau nœud
+                previous_node_a->next = current_node_a;// Relie le nœud précédent au nouveau nœud
+	            previous_node_b->next = current_node_b;
             }
 
-            previous_node = current_node; // Met à jour le nœud précédent
-            i++;
+            previous_node_a = current_node_a; // Met à jour le nœud précédent, on avance
+	        previous_node_b = current_node_b;
+	        i++;
         }
-        ps->tail = previous_node; // Enregistre l'adresse du dernier nœud
+        //ps->tail = previous_node; // Enregistre l'adresse du dernier nœud
     }
 
 
@@ -59,18 +68,34 @@ void init_list(t_pushswap *ps)//madre, cree la liste
 //on a une liste partant de 	
 void	fill_list(t_pushswap *ps)//recupere le tableau de char et transforme en int->list
 {
-	t_node *current_node;
+	t_node *current_node_a;
 	int i;
 
 	i = 0;
-	current_node = ps->head_a;
-	while (current_node != NULL && i < ps->number_numbers)// current_node -> next iciiiiiii
+	current_node_a = ps->head_a;
+	while (current_node_a != NULL && i < ps->number_numbers)// current_node_a -> next iciiiiiii
 	{
-		current_node->data = ft_atoi(ps->tab_args_number[i]);
-		current_node = current_node->next;
+		current_node_a->data = ft_atoi(ps->tab_args_number[i]);
+		current_node_a = current_node_a->next;
 		i++;
 	}
 	
+}
+
+void    fill_test(t_node **node, t_pushswap *ps)
+{
+	t_node *current;
+	int i= 0;
+	int n = 10;
+	current = *node;
+	while (current != NULL && i < ps->number_numbers)// current_node_a -> next iciiiiiii
+	{
+		current->data = n;
+		current = current->next;
+		i++;
+		n++;
+	}
+
 }
 
 
@@ -93,20 +118,34 @@ void	free_structure(t_pushswap *ps)
         free(ps->tab_args_number);
 }
 
-void    free_nodes(t_pushswap *ps)//fin di projet, llibere
+//void    free_nodes(t_node **head)//fin di projet, llibere , avant : t_pushswap *ps
+//{
+//    t_node *tmp;
+//
+//    while ((*head)->next != NULL)
+//    {
+//        if (*head != NULL)
+//        {
+//            tmp = *head;
+//            tmp = (*head)->next;
+//            free(*head);
+//	        *head = tmp;
+//       }
+//    }
+//    free(tmp);
+//    tmp = NULL;
+//}
+void free_nodes(t_node **head)
 {
-    t_node *tmp;
+	t_node *current_node = *head;
+	t_node *next_node;
 
-    while (ps->head_a->next != NULL)
-    {
-        if (ps->head_a != NULL)
-        {
-            tmp = ps->head_a;
-            tmp = ps->head_a->next;
-            free(ps->head_a);
-            ps->head_a = tmp;
-        }
-    }
-    free(tmp);
-    tmp = NULL;
+	while (current_node != NULL)
+	{
+		next_node = current_node->next;
+		free(current_node);
+		current_node = next_node;
+	}
+
+	*head = NULL; // Mettre à NULL pour indiquer que la liste est maintenant vide
 }

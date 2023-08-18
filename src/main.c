@@ -30,17 +30,28 @@ int	main(int ac, char **av)
 
     init_list(&ps);
 	fill_list(&ps);
-	
-	print_nodes(&ps);
-    printf("\n------------------\n");
 
-//	swap(&(ps.head));
-	rotate_up(&(ps.head_a));
-//    reverse_rotate(&(ps.head));
+	fill_test(&(ps.head_b), &ps);
+	index_node(&ps);
+	print_nodes(&(ps.head_a), 'A');
+	printf("\n\n");
+	print_nodes(&(ps.head_b), 'B');
+    printf("\n-------After-----------\n");
+//-------------  Test   ----------------------------
+// 	swap(&(ps.head));
+//	rotate_up(&(ps.head_a));
+//  reverse_rotate(&(ps.head));
+//	push(&(ps.head_b),&(ps.head_a));
+//	double_rotate(&(ps.head_b),&(ps.head_a));
+//	double_swap(&(ps.head_b),&(ps.head_a));
+//	double_reverse_rotate(&(ps.head_b),&(ps.head_a));
+	threesome(&ps);
+    print_nodes(&(ps.head_a),'A' );
+	printf("\n\n");
+	print_nodes(&(ps.head_b), 'B');
 
-    print_nodes(&ps);
-
-	free_nodes(&ps);
+	free_nodes(&(ps.head_a));
+	free_nodes(&(ps.head_a));
 	free_structure(&ps);
 	printf("🍕 Ciao Ciao Ciao Ciao Ciao Ciao Ciao Ciao 🍕 \n");
 	return (0);

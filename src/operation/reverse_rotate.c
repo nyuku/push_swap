@@ -71,7 +71,14 @@ void    reverse_rotate(t_node **head)
     prev_last->next = NULL;
 
 
-    }
+}
+
+void double_reverse_rotate(t_node **node_a,t_node **node_b)
+{
+	reverse_rotate(node_a);
+	reverse_rotate(node_b);
+}
+
 
 
 

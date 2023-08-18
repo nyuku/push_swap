@@ -31,6 +31,7 @@
 typedef struct    s_node
 {
     int             data;
+	int             index;
     struct s_node   *next;
 
 }                t_node;
@@ -38,7 +39,7 @@ typedef struct    s_node
 
 typedef struct	s_pushswap
 {
-    int     number_arg;
+    //int     number_arg;
     char    **tab_args_number;
     int     multi_arg;
     int		mono_arg;
@@ -46,12 +47,13 @@ typedef struct	s_pushswap
 
 	t_node	*head_a;
     t_node	*head_b;
+	t_node  *biggest;
 
-	t_node	*tail;
-    t_node  *stack_a;
-    int     size_a;
-    t_node  *stack_b;
-    int     size_b;
+//	t_node	*tail;
+//    t_node  *stack_a;
+//    int     size_a;
+//    t_node  *stack_b;
+//    int     size_b;
     
 }				t_pushswap;
 
@@ -67,11 +69,11 @@ int 	check_if_number(char *str);
 
 void    init_list(t_pushswap *ps);//madre
 void    fill_list(t_pushswap *ps);
-void    print_nodes(t_pushswap *ps);
+void    print_nodes(t_node **node, char c);
 t_node  *node_init();
-void    free_nodes(t_pushswap *ps);
+void    free_nodes(t_node **head);
 
-void print_list(t_node *head);
+void print_list(t_node *head, char c);
 /*◇───────────────────────────────────────────────────────────────◇*\
 * 	check_error.c
 \*◇───────────────────────────────────────────────────────────────◇*/
@@ -85,18 +87,27 @@ int check_int_limit(char *str);
 int p_error();
 long	ft_atol(const char *nptr);
 void	free_structure(t_pushswap *ps);
+int    list_size(t_node *node);
+void    fill_test(t_node **node, t_pushswap *ps);
+void    index_node(t_pushswap *ps);
+void    find_biggest(t_pushswap *ps);
 /*◇───────────────────────────────────────────────────────────────◇*\
 * 	Rules
 \*◇───────────────────────────────────────────────────────────────◇*/
-void   swap(t_node **node);
+void    swap(t_node **node);
 void    rotate_up(t_node **head);
 void    reverse_rotate(t_node **head);
-
-void double_swap(t_node **node_a, t_node **node_b);
+void    push(t_node **origin, t_node **destination);
+void    double_swap(t_node **node_a, t_node **node_b);
+void    double_rotate(t_node **node_a,t_node **node_b);
+void    double_reverse_rotate(t_node **node_a,t_node **node_b);
 /*◇───────────────────────────────────────────────────────────────◇*\
 * 	Liste
 \*◇───────────────────────────────────────────────────────────────◇*/
 t_node	*last_node(t_node *head);
-
+/*◇───────────────────────────────────────────────────────────────◇*\
+* 	algo
+\*◇───────────────────────────────────────────────────────────────◇*/
+void    threesome(t_pushswap *ps);
 
 #endif
