@@ -13,7 +13,7 @@
 #include "push_swap.h"
 
 
-void swap(t_node **node)//donne le 1er node 
+void swap(t_node **node,  t_pushswap *ps)//donne le 1er node
 {
     if (*node == NULL || (*node)->next == NULL)
         return;
@@ -33,10 +33,12 @@ void swap(t_node **node)//donne le 1er node
 	//le pointeur de node-2 pointe vers le noeud 1(son adresse)
     node2->next = node1;
     *node = node2;
+	ps->nombre_op++;
+	ft_printf("spwap\n");
 }
 
-void double_swap(t_node **node_a, t_node **node_b)
+void double_swap(t_node **node_a, t_node **node_b, t_pushswap *ps)
 {
-    swap(node_a);
-    swap(node_b);
+    swap(node_a, ps);
+    swap(node_b, ps);
 }

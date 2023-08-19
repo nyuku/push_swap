@@ -16,6 +16,7 @@
 int	main(int ac, char **av)
 {
 	t_pushswap ps;
+	ps.nombre_op = 0;
 	ps.multi_arg = 0;
 	ps.mono_arg = 0;
 	check_all_arg(av, ac, &ps);//mono arg et multi
@@ -45,7 +46,11 @@ int	main(int ac, char **av)
 //	double_rotate(&(ps.head_b),&(ps.head_a));
 //	double_swap(&(ps.head_b),&(ps.head_a));
 //	double_reverse_rotate(&(ps.head_b),&(ps.head_a));
-	threesome(&ps);
+//	threesome(&ps);
+//	sorting_for(&ps);
+//	sorting_five(&ps);
+	small_sorting(&ps);
+	printf("\n\n");
     print_nodes(&(ps.head_a),'A' );
 	printf("\n\n");
 	print_nodes(&(ps.head_b), 'B');
@@ -53,6 +58,7 @@ int	main(int ac, char **av)
 	free_nodes(&(ps.head_a));
 	free_nodes(&(ps.head_a));
 	free_structure(&ps);
+	printf("\nNombre d'opération: %d\n",ps.nombre_op);
 	printf("🍕 Ciao Ciao Ciao Ciao Ciao Ciao Ciao Ciao 🍕 \n");
 	return (0);
 	

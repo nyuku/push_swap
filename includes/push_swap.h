@@ -44,6 +44,7 @@ typedef struct	s_pushswap
     int     multi_arg;
     int		mono_arg;
     int     number_numbers;
+	int     nombre_op;
 
 	t_node	*head_a;
     t_node	*head_b;
@@ -94,13 +95,13 @@ void    find_biggest(t_pushswap *ps);
 /*◇───────────────────────────────────────────────────────────────◇*\
 * 	Rules
 \*◇───────────────────────────────────────────────────────────────◇*/
-void    swap(t_node **node);
-void    rotate_up(t_node **head);
-void    reverse_rotate(t_node **head);
-void    push(t_node **origin, t_node **destination);
-void    double_swap(t_node **node_a, t_node **node_b);
-void    double_rotate(t_node **node_a,t_node **node_b);
-void    double_reverse_rotate(t_node **node_a,t_node **node_b);
+void    swap(t_node **node,t_pushswap *ps);
+void    rotate_up(t_node **head,t_pushswap *ps);
+void    reverse_rotate(t_node **head,t_pushswap *ps);
+void    push(t_node **origin, t_node **destination,t_pushswap *ps);
+void    double_swap(t_node **node_a, t_node **node_b,t_pushswap *ps);
+void    double_rotate(t_node **node_a,t_node **node_b, t_pushswap *ps);
+void    double_reverse_rotate(t_node **node_a,t_node **node_b, t_pushswap *ps);
 /*◇───────────────────────────────────────────────────────────────◇*\
 * 	Liste
 \*◇───────────────────────────────────────────────────────────────◇*/
@@ -108,6 +109,11 @@ t_node	*last_node(t_node *head);
 /*◇───────────────────────────────────────────────────────────────◇*\
 * 	algo
 \*◇───────────────────────────────────────────────────────────────◇*/
-void    threesome(t_pushswap *ps);
+void    threesome(t_pushswap *ps, int sorting_for);
+void    sorting_for(t_pushswap *ps,  int five_sort);
+void    sorting_five(t_pushswap *ps);
+void    small_sorting(t_pushswap *ps);
+void    duo(t_pushswap *ps);
+
 
 #endif

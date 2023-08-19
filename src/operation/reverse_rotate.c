@@ -43,7 +43,7 @@
 
 
 
-void    reverse_rotate(t_node **head)
+void    reverse_rotate(t_node **head,  t_pushswap *ps)
 //on pousse vers le bas
 // [node1] -> [node2] -> [node3] -> [node4] -> [node5] avant ---> push
 // [node5] -> [node1] -> [node2] -> [node3] -> [node4] apres
@@ -69,14 +69,16 @@ void    reverse_rotate(t_node **head)
     *head = end; // move 1, on modifie directement la liste. 5nd ->1er
     (*head)->next = node_1; // move 2
     prev_last->next = NULL;
+	ps->nombre_op++;
+	ft_printf("reverse_rotate\n");
 
 
 }
 
-void double_reverse_rotate(t_node **node_a,t_node **node_b)
+void double_reverse_rotate(t_node **node_a,t_node **node_b,t_pushswap *ps)
 {
-	reverse_rotate(node_a);
-	reverse_rotate(node_b);
+	reverse_rotate(node_a, ps);
+	reverse_rotate(node_b, ps);
 }
 
 

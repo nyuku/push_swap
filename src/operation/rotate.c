@@ -18,7 +18,7 @@
 // [node1] -> [node2] -> [node3] -> [node4] -> [node5] avant <--- push
 // [node2] <- [node3] <- [node4] <- [node5] <- [node1] apres
 // le 1er devient dernier -> pour savoir lequel mettre a NULL
-void    rotate_up(t_node **head)
+void    rotate_up(t_node **head, t_pushswap *ps)
 //head correspond a 1er de la liste, first
 {
     t_node *node_1;
@@ -31,14 +31,15 @@ void    rotate_up(t_node **head)
 
     end->next = node_1; // move 2, on avait stocké first pour ca. on pointe l'avant last sur le new last
     node_1->next = NULL; // move 3
-    //end->data = node_1->data;
+	ps->nombre_op++;
+	ft_printf("rotate\n");
 
 }
 
-void double_rotate(t_node **node_a,t_node **node_b)
+void double_rotate(t_node **node_a,t_node **node_b, t_pushswap *ps)
 {
-	rotate_up(node_a);
-	rotate_up(node_b);
+	rotate_up(node_a, ps);
+	rotate_up(node_b, ps);
 }
 
 

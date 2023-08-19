@@ -12,23 +12,23 @@
 #include "../includes/push_swap.h"
 
 
-//void    small_sorting(t_pushswap *ps)
-//{
-//	if (ps->number_numbers == 2)
-//		duo(ps);
-//	if (ps->number_numbers == 3)
-//		threesome(ps);
-//	if (ps->number_numbers == 4)
-//		sorting_for(ps);
-//	if (ps->number_numbers == 5)
-//		sorting_five(ps);
-//
-//
-//}
-//void    duo(t_pushswap *ps)
-//{
-//
-//}
+void    small_sorting(t_pushswap *ps)
+{
+	if (ps->number_numbers == 2)
+		duo(ps);
+	if (ps->number_numbers == 3)
+		threesome(ps, 0);
+	if (ps->number_numbers == 4)
+		sorting_for(ps, 0);
+	if (ps->number_numbers == 5)
+		sorting_five(ps);
+}
+
+void    duo(t_pushswap *ps)
+{
+	if (ps->head_a->index != 1)
+		swap(&(ps->head_a), ps);
+}
 
 
 //il y 5 cas à trier
@@ -38,39 +38,68 @@
 //3-2-1 ->swap, r.rotate
 //3-1-2 ->rotate
 //2-3-1 ->r.rotate
-void    threesome(t_pushswap *ps)
+void    threesome(t_pushswap *ps, int sorting_for)// sera 0 si seul, sinon pour compenser 3-4-5 de sorting 5 -> 1-2-3
 {
-	if (ps->head_a->index == 1 && ps->head_a->next->index == 3 && ps->head_a->next->next->index == 2)
+	if (ps->head_a->index == (1 +sorting_for) && ps->head_a->next->index == (3+sorting_for) && ps->head_a->next->next->index == (2 +sorting_for))
 	{
-		swap(&(ps->head_a));
-		rotate_up(&(ps->head_a));
+		swap(&(ps->head_a), ps);
+		rotate_up(&(ps->head_a), ps);
 	}
-	else if (ps->head_a->index == 2 && ps->head_a->next->index == 1 && ps->head_a->next->next->index == 3)
+	else if (ps->head_a->index == (2 +sorting_for) && ps->head_a->next->index == (1 +sorting_for) && ps->head_a->next->next->index == (3 +sorting_for))
 	{
-		swap(&(ps->head_a));
+		swap(&(ps->head_a), ps);
 	}
-	else if (ps->head_a->index == 3 && ps->head_a->next->index == 2 && ps->head_a->next->next->index == 1)
+	else if (ps->head_a->index == (3 +sorting_for) && ps->head_a->next->index == (2 +sorting_for) && ps->head_a->next->next->index == (1 +sorting_for))
 	{
-		swap(&(ps->head_a));
-		reverse_rotate(&(ps->head_a));
+		swap(&(ps->head_a), ps);
+		reverse_rotate(&(ps->head_a), ps);
 	}
-	else if (ps->head_a->index == 3 && ps->head_a->next->index == 1 && ps->head_a->next->next->index == 2)
+	else if (ps->head_a->index == (3 +sorting_for) && ps->head_a->next->index == (1 +sorting_for) && ps->head_a->next->next->index == (2 +sorting_for))
 	{
-		rotate_up(&(ps->head_a));
+		rotate_up(&(ps->head_a), ps);
 	}
-	else if (ps->head_a->index == 2 && ps->head_a->next->index == 3 && ps->head_a->next->next->index == 1)
+	else if (ps->head_a->index == (2 +sorting_for) && ps->head_a->next->index == (3 +sorting_for) && ps->head_a->next->next->index == (1 +sorting_for))
 	{
-		reverse_rotate(&(ps->head_a));
+		reverse_rotate(&(ps->head_a), ps);
 	}
-
 }
 //
-//void    sorting_for(t_pushswap *ps)
-//{
-//
-//}
-//
-//void    sorting_five(t_pushswap *ps)
-//{
-//
-//}
+
+void    sorting_for(t_pushswap *ps, int five_sort)
+{
+	t_node  *temp;
+	t_node *smallest;
+
+	temp = ps->head_a;
+	t_node *prout;
+	prout = last_node(ps->head_a);
+	if (prout->index == 1)// si dernier == 1
+		reverse_rotate(&(ps->head_a), ps);
+	else
+	{
+		while ((five_sort == 0 && ps->head_a->index != 1) ||(five_sort == 1 && ps->head_a->index != 2)) // on cherche a mettre le n-1 au tout dessus
+			rotate_up(&ps->head_a, ps);// max 3
+	}
+	push(&(ps->head_a), &(ps->head_b), ps);
+	threesome(ps, 2);
+	push(&(ps->head_b),&(ps->head_a), ps);
+}
+
+void    sorting_five(t_pushswap *ps)
+{
+	t_node  *temp;
+	t_node *smallest;
+	temp = ps->head_a;
+	t_node *prout;
+	prout = last_node(ps->head_a);
+	if (prout->index == 1)// si dernier == 1
+		reverse_rotate(&(ps->head_a), ps);
+	else if((ps->head_a->index != 1))
+	{
+		while (ps->head_a->index != 1) // on cherche a mettre le n-1 au tout dessus
+			rotate_up(&ps->head_a, ps);// max 4
+	}
+	push(&(ps->head_a), &(ps->head_b), ps);
+	sorting_for(ps, 1);
+	push(&(ps->head_b),&(ps->head_a), ps);
+}
