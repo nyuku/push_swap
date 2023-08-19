@@ -12,8 +12,25 @@
 
 #include "../includes/push_swap.h"
 
+int check_double(t_node *head)
+{
+	t_node *temp;
+	t_node *compare;
 
-
+	temp = head;
+	while (temp != NULL)
+	{
+		compare = temp;
+		while(compare != NULL)
+		{
+			if(compare == compare->next)
+				return(ERROR);
+			compare = compare->next;
+		}
+		temp = temp->next;
+	}
+	return(SUCCESS);
+}
 int	check_isnumber(char *str)
 {
 	int	i;

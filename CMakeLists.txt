@@ -52,4 +52,4 @@ add_executable(puuuuush
         src/check_errors.c
         src/main.c
         src/structure_list.c
-        src/utils.c src/operation/rotate.c src/operation/reverse_rotate.c src/check.c src/operation/push.c src/sorting/sorting_3.c src/sorting/index.c)
+        src/utils.c src/operation/rotate.c src/operation/reverse_rotate.c src/check.c src/operation/push.c src/sorting/sorting_under_5.c src/sorting/index.c src/sorting/sorting_more.c)

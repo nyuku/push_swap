@@ -6,7 +6,7 @@
 #    By: angela <angela@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/24 22:57:11 by angela            #+#    #+#              #
-#    Updated: 2023/08/01 13:26:09 by angela           ###   ########.fr        #
+#    Updated: 2023/08/20 00:09:42 by angela           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,7 +43,8 @@ SRC				=	./src/main.c \
 					./src/operation/rotate.c \
 					./src/operation/reverse_rotate.c \
 					./src/operation/push.c \
-					./src/sorting/sorting_3.c
+					./src/sorting/sorting_under_5.c \
+					./src/sorting/sorting_more.c
 					
 				 
 LIB				= ./includes/push_swap.h

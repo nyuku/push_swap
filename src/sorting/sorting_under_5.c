@@ -63,7 +63,6 @@ void    threesome(t_pushswap *ps, int sorting_for)// sera 0 si seul, sinon pour 
 		reverse_rotate(&(ps->head_a), ps);
 	}
 }
-//
 
 void    sorting_for(t_pushswap *ps, int five_sort)
 {

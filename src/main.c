@@ -21,18 +21,19 @@ int	main(int ac, char **av)
 	ps.mono_arg = 0;
 	check_all_arg(av, ac, &ps);//mono arg et multi
     if (ps.mono_arg != 0 && ac == 2)
-    {
         ps.number_numbers = ps.mono_arg;
-    }
     else if (ac > 2)
-    {
         ps.number_numbers = ps.multi_arg;
-    }
 
     init_list(&ps);
 	fill_list(&ps);
+	if ((check_double(ps.head_a)) == 0)
+	{
+		ft_printf("error, doublon \n");
+		return(1);
+	}
 
-	fill_test(&(ps.head_b), &ps);
+	//fill_test(&(ps.head_b), &ps);
 	index_node(&ps);
 	print_nodes(&(ps.head_a), 'A');
 	printf("\n\n");
@@ -49,7 +50,10 @@ int	main(int ac, char **av)
 //	threesome(&ps);
 //	sorting_for(&ps);
 //	sorting_five(&ps);
-	small_sorting(&ps);
+	if (ac <= 6)
+		small_sorting(&ps);
+//	else
+//		big_sorting(&ps);
 	printf("\n\n");
     print_nodes(&(ps.head_a),'A' );
 	printf("\n\n");

@@ -81,6 +81,7 @@ void print_list(t_node *head, char c);
 int check_errors(int ac, char **av);
 int	check_isnumber(char *str);
 int check_int_limit(char *str);
+int check_double(t_node *head);
 
 /*◇───────────────────────────────────────────────────────────────◇*\
 * 	utils.c
