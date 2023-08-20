@@ -50,10 +50,7 @@ int	main(int ac, char **av)
 //	threesome(&ps);
 //	sorting_for(&ps);
 //	sorting_five(&ps);
-	if (ac <= 6)
-		small_sorting(&ps);
-//	else
-//		big_sorting(&ps);
+	sorting_20(&ps, 20);
 	printf("\n\n");
     print_nodes(&(ps.head_a),'A' );
 	printf("\n\n");

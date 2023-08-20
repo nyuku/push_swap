@@ -115,6 +115,7 @@ void    sorting_for(t_pushswap *ps,  int five_sort);
 void    sorting_five(t_pushswap *ps);
 void    small_sorting(t_pushswap *ps);
 void    duo(t_pushswap *ps);
+void    sorting_20(t_pushswap *ps, int limit);
 
 
 #endif
