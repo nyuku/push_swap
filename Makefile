@@ -44,7 +44,9 @@ SRC				=	./src/main.c \
 					./src/operation/reverse_rotate.c \
 					./src/operation/push.c \
 					./src/sorting/sorting_under_5.c \
-					./src/sorting/sorting_more.c
+					./src/sorting/sorting_more.c \
+					./src/sorting/copie.c
+
 					
 				 
 LIB				= ./includes/push_swap.h

@@ -26,6 +26,7 @@ int	main(int ac, char **av)
         ps.number_numbers = ps.multi_arg;
 
     init_list(&ps);
+	ps.head_b = node_init();
 	fill_list(&ps);
 	if ((check_double(ps.head_a)) == 0)
 	{
@@ -50,7 +51,12 @@ int	main(int ac, char **av)
 //	threesome(&ps);
 //	sorting_for(&ps);
 //	sorting_five(&ps);
-	sorting_20(&ps, 20);
+	//push_b_chunks(&ps, 20, 1);
+//	sorting_push_b(&ps, 20);
+	//sorting_in_b(&ps);
+
+	big_sort(&ps);
+
 	printf("\n\n");
     print_nodes(&(ps.head_a),'A' );
 	printf("\n\n");

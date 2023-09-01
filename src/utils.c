@@ -11,6 +11,22 @@
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+int find_index(t_node *head, int target_index)
+{
+	int i = 0;
+	t_node *current = head;
+
+	while (current != NULL)
+	{
+		if (current->index == target_index)
+			return i;  // Index trouvé, renvoie le nombre de nœuds parcourus
+		current = current->next;
+		i++;
+	}
+
+	return -1; // Index non trouvé dans la liste
+}
+
 //
 //int choose_small(t_node *node)
 //{
@@ -27,6 +43,31 @@
 //			data_min =
 //	}
 //}
+
+int is_in_upper_half(t_node *head, int index_position)
+{
+	int size = list_size(head);
+	int index_to_find = size / 2; // Index de la moitié de la liste
+
+	if (index_position == -1)
+	{
+		// L'index de la moitié n'a pas été trouvé, ce qui est inhabituel.
+		// Vous pouvez gérer cette situation comme vous le souhaitez.
+		return -1;
+	}
+
+	if (index_position < size / 2)
+	{
+		// Nous sommes dans la moitié supérieure de la liste.
+		return 1;
+	}
+	else
+	{
+		// Nous sommes dans la moitié inférieure de la liste.
+		return 0;
+	}
+}
+
 int    list_size(t_node *node) // op -push
 {
 	int i;
@@ -52,6 +93,7 @@ t_node	*last_node(t_node *head)
 }
 
 void    print_nodes(t_node **node, char c)// print la liste, t_pushswap *ps
+//imprime mm les node(0)
 {
     //int i;
     t_node *current_node;
@@ -59,9 +101,12 @@ void    print_nodes(t_node **node, char c)// print la liste, t_pushswap *ps
     current_node = *node;
     //i = 0;
 	printf("Liste %c\n",c);
+	if (current_node == NULL)
+		ft_printf("c'est vide\n");
     while (current_node!= NULL)//ici changer , avant current_node ->next
     {
-        printf("node(%d)->data = %d\n",current_node->index , current_node->data);
+
+		printf("node(%d)->data = %d\n",current_node->index , current_node->data);
         //printf ("adresse du node %p\n", current_node->next);
         current_node = current_node->next;
         //i++;

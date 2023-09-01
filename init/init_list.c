@@ -24,6 +24,7 @@ t_node *node_init()// un node a la fois, utils
         return (NULL);
     node->next = NULL;
 	node->index = NULL;//new
+	node->data = NULL;
     return (node);
 }
 
@@ -31,32 +32,29 @@ void init_list(t_pushswap *ps)//madre, cree la liste
    {
         int i = 0;
         t_node *previous_node_a = NULL;
-	    t_node *previous_node_b = NULL;
+	    //t_node *previous_node_b = NULL;
         t_node *current_node_a;
-        t_node *current_node_b;// modifie en doublant tout
+        //t_node *current_node_b;// modifie en doublant tout
 
 
         while (i < ps->number_numbers)
         {
             current_node_a = node_init(); // Crée un nouveau nœud
-	        current_node_b = node_init();
+	        //current_node_b = node_init();
 
-//            current_node_a->next = NULL; // Initialise next à NULL
-//	        current_node_b->next = NULL;
-
-            if (previous_node_a == NULL || previous_node_b == NULL)// si on est au 1er node
+            if (previous_node_a == NULL)// || previous_node_b == NULL)// si on est au 1er node
             {
                 ps->head_a = current_node_a; // Enregistre l'adresse du premier nœud
-	            ps->head_b = current_node_b;// ca marche pour le while...?
+	            //ps->head_b = current_node_b;// ca marche pour le while...?
             }
             else
             {
                 previous_node_a->next = current_node_a;// Relie le nœud précédent au nouveau nœud
-	            previous_node_b->next = current_node_b;
+	            //previous_node_b->next = current_node_b;
             }
 
             previous_node_a = current_node_a; // Met à jour le nœud précédent, on avance
-	        previous_node_b = current_node_b;
+	        //previous_node_b = current_node_b;
 	        i++;
         }
         //ps->tail = previous_node; // Enregistre l'adresse du dernier nœud

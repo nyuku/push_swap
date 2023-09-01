@@ -115,7 +115,19 @@ void    sorting_for(t_pushswap *ps,  int five_sort);
 void    sorting_five(t_pushswap *ps);
 void    small_sorting(t_pushswap *ps);
 void    duo(t_pushswap *ps);
-void    sorting_20(t_pushswap *ps, int limit);
+void    push_b_chunks(t_pushswap *ps, int chunks, int round);
+void    sorting_push_b(t_pushswap *ps, int chunks);
+void    push_down_b(t_pushswap *ps, int limit_max);
+void    sorting_in_b(t_pushswap *ps);
 
+void a_to_b(t_pushswap *ps, int chunk, int chunk_done);
+int get_min_index(t_node *head);
+
+int get_min_index(t_node *head);
+void big_sort(t_pushswap *ps);
+//.....
+int find_index(t_node *head, int target_index);
+int is_in_upper_half(t_node *head, int index_position);// retourn 1 si en haut, 0 si en bas
+int get_max_index(t_node *head);
 
 #endif

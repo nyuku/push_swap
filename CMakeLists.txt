@@ -51,5 +51,4 @@ add_executable(puuuuush
         src/ft_printf/u_x_X.c
         src/check_errors.c
         src/main.c
-        src/structure_list.c
-        src/utils.c src/operation/rotate.c src/operation/reverse_rotate.c src/check.c src/operation/push.c src/sorting/sorting_under_5.c src/sorting/index.c src/sorting/sorting_more.c)
+        src/utils.c src/operation/rotate.c src/operation/reverse_rotate.c src/check.c src/operation/push.c src/sorting/sorting_under_5.c src/sorting/index.c src/sorting/sorting_more.c src/sorting/copie.c)
