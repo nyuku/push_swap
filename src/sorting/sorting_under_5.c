@@ -1,15 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sorting_3.c                                        :+:      :+:    :+:   */
+/*   sorting_under_5.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: angela <angela@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 16:24:36 by angela            #+#    #+#             */
-/*   Updated: 2023/08/18 16:24:37 by angela           ###   ########.fr       */
+/*   Updated: 2023/09/04 11:01:00 by angela           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "../includes/push_swap.h"
+
+#include "../../includes/push_swap.h"
 
 
 void    small_sorting(t_pushswap *ps)
@@ -66,10 +67,10 @@ void    threesome(t_pushswap *ps, int sorting_for)// sera 0 si seul, sinon pour 
 
 void    sorting_for(t_pushswap *ps, int five_sort)
 {
-	t_node  *temp;
-	t_node *smallest;
+	//t_node  *temp;
+	//t_node *smallest;
 
-	temp = ps->head_a;
+	//temp = ps->head_a;
 	t_node *prout;
 	prout = last_node(ps->head_a);
 	if (prout->index == 1)// si dernier == 1
@@ -80,15 +81,15 @@ void    sorting_for(t_pushswap *ps, int five_sort)
 			rotate_up(&ps->head_a, ps);// max 3
 	}
 	push(&(ps->head_a), &(ps->head_b), ps);
-	threesome(ps, 2);
+	threesome(ps, 1);
 	push(&(ps->head_b),&(ps->head_a), ps);
 }
 
 void    sorting_five(t_pushswap *ps)
 {
-	t_node  *temp;
-	t_node *smallest;
-	temp = ps->head_a;
+	//t_node  *temp;
+	//t_node *smallest;
+	//t_node  *temp = ps->head_a;
 	t_node *prout;
 	prout = last_node(ps->head_a);
 	if (prout->index == 1)// si dernier == 1

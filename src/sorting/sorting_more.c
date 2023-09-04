@@ -6,11 +6,11 @@
 /*   By: angela <angela@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/20 00:09:12 by angela            #+#    #+#             */
-/*   Updated: 2023/08/20 00:09:49 by angela           ###   ########.fr       */
+/*   Updated: 2023/09/03 17:43:51 by angela           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../../includes/push_swap.h"
 void push_b_chunks(t_pushswap *ps, int chunks, int round)
 {
 	int i = 1;

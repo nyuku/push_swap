@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rrotate.c                                          :+:      :+:    :+:   */
+/*   reverse_rotate.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: angela <angela@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 13:25:21 by angela            #+#    #+#             */
-/*   Updated: 2023/08/07 18:59:23 by angela           ###   ########.fr       */
+/*   Updated: 2023/09/03 17:43:27 by angela           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
-#include "../includes/push_swap.h"
+#include "../../includes/push_swap.h"
 
 //void reverse_rotate(t_node **head) {
 //    if (*head == NULL || (*head)->next == NULL) {

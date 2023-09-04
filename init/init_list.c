@@ -6,7 +6,7 @@
 /*   By: angela <angela@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 22:18:53 by angela            #+#    #+#             */
-/*   Updated: 2023/08/03 17:26:44 by angela           ###   ########.fr       */
+/*   Updated: 2023/09/04 11:26:10 by angela           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ t_node *node_init()// un node a la fois, utils
     if (node == NULL)
         return (NULL);
     node->next = NULL;
-	node->index = NULL;//new
-	node->data = NULL;
+	//node->index = NULL;//new
+	//node->data = NULL;
     return (node);
 }
 
@@ -64,13 +64,23 @@ void init_list(t_pushswap *ps)//madre, cree la liste
 
 
 //on a une liste partant de 	
-void	fill_list(t_pushswap *ps)//recupere le tableau de char et transforme en int->list
+void	fill_list(t_pushswap *ps, char **av)//recupere le tableau de char et transforme en int->list
 {
 	t_node *current_node_a;
 	int i;
 
 	i = 0;
 	current_node_a = ps->head_a;
+    if (ps->multi_arg!= 0)
+    {
+        i = 1;
+        while (current_node_a != NULL && i <= ps->number_numbers)// current_node_a -> next iciiiiiii
+	    {
+		current_node_a->data = ft_atoi(av[i]);
+		current_node_a = current_node_a->next;
+		i++;
+	    }
+    }
 	while (current_node_a != NULL && i < ps->number_numbers)// current_node_a -> next iciiiiiii
 	{
 		current_node_a->data = ft_atoi(ps->tab_args_number[i]);

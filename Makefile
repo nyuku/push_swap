@@ -6,7 +6,7 @@
 #    By: angela <angela@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/24 22:57:11 by angela            #+#    #+#              #
-#    Updated: 2023/08/20 00:09:42 by angela           ###   ########.fr        #
+#    Updated: 2023/09/04 10:44:29 by angela           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,7 +45,8 @@ SRC				=	./src/main.c \
 					./src/operation/push.c \
 					./src/sorting/sorting_under_5.c \
 					./src/sorting/sorting_more.c \
-					./src/sorting/copie.c
+					./src/sorting/index.c
+					
 
 					
 				 

@@ -6,11 +6,11 @@
 /*   By: angela <angela@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 00:52:58 by angela            #+#    #+#             */
-/*   Updated: 2023/08/18 00:52:59 by angela           ###   ########.fr       */
+/*   Updated: 2023/09/03 17:43:24 by angela           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../../includes/push_swap.h"
 
 void push(t_node **origin, t_node **destination, t_pushswap *ps)
 {

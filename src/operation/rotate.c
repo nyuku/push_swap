@@ -6,11 +6,11 @@
 /*   By: angela <angela@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 13:25:21 by angela            #+#    #+#             */
-/*   Updated: 2023/08/05 18:59:23 by angela           ###   ########.fr       */
+/*   Updated: 2023/09/03 17:43:19 by angela           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../../includes/push_swap.h"
 
 
 

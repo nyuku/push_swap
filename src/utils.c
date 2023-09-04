@@ -47,7 +47,7 @@ int find_index(t_node *head, int target_index)
 int is_in_upper_half(t_node *head, int index_position)
 {
 	int size = list_size(head);
-	int index_to_find = size / 2; // Index de la moitié de la liste
+	//int index_to_find = size / 2; // Index de la moitié de la liste
 
 	if (index_position == -1)
 	{

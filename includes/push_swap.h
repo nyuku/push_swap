@@ -6,7 +6,7 @@
 /*   By: angela <angela@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/24 22:40:48 by angela            #+#    #+#             */
-/*   Updated: 2023/08/03 15:11:30 by angela           ###   ########.fr       */
+/*   Updated: 2023/09/04 11:24:58 by angela           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ int 	check_if_number(char *str);
 
 
 void    init_list(t_pushswap *ps);//madre
-void    fill_list(t_pushswap *ps);
+void	fill_list(t_pushswap *ps, char **av);
 void    print_nodes(t_node **node, char c);
 t_node  *node_init();
 void    free_nodes(t_node **head);

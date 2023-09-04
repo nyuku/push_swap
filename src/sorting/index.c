@@ -6,11 +6,11 @@
 /*   By: angela <angela@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 19:21:27 by angela            #+#    #+#             */
-/*   Updated: 2023/08/19 16:19:31 by angela           ###   ########.fr       */
+/*   Updated: 2023/09/03 17:43:56 by angela           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../../includes/push_swap.h"
 //fonction pour ajouter un index à chaque node, on s'occupe que la liste A en debut de
 
 void    find_biggest(t_pushswap *ps)

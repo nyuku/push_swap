@@ -6,7 +6,7 @@
 /*   By: angela <angela@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 22:19:08 by angela            #+#    #+#             */
-/*   Updated: 2023/08/03 15:11:52 by angela           ###   ########.fr       */
+/*   Updated: 2023/09/04 11:28:06 by angela           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	main(int ac, char **av)
 
     init_list(&ps);
 	ps.head_b = node_init();
-	fill_list(&ps);
+	fill_list(&ps, av);
 	if ((check_double(ps.head_a)) == 0)
 	{
 		ft_printf("error, doublon \n");
@@ -55,7 +55,10 @@ int	main(int ac, char **av)
 //	sorting_push_b(&ps, 20);
 	//sorting_in_b(&ps);
 
-	big_sort(&ps);
+	if (ps.number_numbers > 5)
+		big_sort(&ps);
+	else
+		small_sorting(&ps);
 
 	printf("\n\n");
     print_nodes(&(ps.head_a),'A' );
