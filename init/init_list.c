@@ -6,7 +6,7 @@
 /*   By: angela <angela@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 22:18:53 by angela            #+#    #+#             */
-/*   Updated: 2023/09/04 11:26:10 by angela           ###   ########.fr       */
+/*   Updated: 2023/09/14 15:16:27 by angela           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 /*C'est une fonction qui initialise la liste chainée
 Elles vont recevoir les arguments données en entrée.*/
+
+// doit libérer la str qui a éte split pour mono arg
 
 t_node *node_init()// un node a la fois, utils
 {
@@ -58,6 +60,9 @@ void init_list(t_pushswap *ps)//madre, cree la liste
 	        i++;
         }
         //ps->tail = previous_node; // Enregistre l'adresse du dernier nœud
+        //il faut libérer la str qui a contenu les infos
+        if (ps->tab_args_number != NULL)
+            ft_free_str(ps->tab_args_number); 
     }
 
 

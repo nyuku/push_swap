@@ -6,7 +6,7 @@
 #    By: angela <angela@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/29 13:55:51 by angnguye          #+#    #+#              #
-#    Updated: 2023/07/31 00:11:54 by angela           ###   ########.fr        #
+#    Updated: 2023/09/13 11:01:06 by angela           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,6 +44,7 @@ SRCS		=	ft_isalnum.c \
 				ft_putstr_fd.c \
 				ft_putnbr_fd.c \
 				ft_putendl_fd.c \
+				ft_free_str.c
 
 OBJS		= $(SRCS:.c=.o)
 CC			= gcc

@@ -6,7 +6,7 @@
 /*   By: angela <angela@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/24 22:40:48 by angela            #+#    #+#             */
-/*   Updated: 2023/09/04 11:24:58 by angela           ###   ########.fr       */
+/*   Updated: 2023/09/14 11:38:59 by angela           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,7 @@ int check_errors(int ac, char **av);
 int	check_isnumber(char *str);
 int check_int_limit(char *str);
 int check_double(t_node *head);
+void	ft_stderror(char *str);
 
 /*◇───────────────────────────────────────────────────────────────◇*\
 * 	utils.c
@@ -93,6 +94,8 @@ int    list_size(t_node *node);
 void    fill_test(t_node **node, t_pushswap *ps);
 void    index_node(t_pushswap *ps);
 void    find_biggest(t_pushswap *ps);
+int	is_already__sorted(t_node **stack);// retourn 1 si c'est dans l'ordere
+
 /*◇───────────────────────────────────────────────────────────────◇*\
 * 	Rules
 \*◇───────────────────────────────────────────────────────────────◇*/

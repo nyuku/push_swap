@@ -11,6 +11,13 @@
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+
+void	ft_stderror(char *str)
+{
+	ft_putendl_fd(str, 2);
+	exit(0);
+}
+
 int find_index(t_node *head, int target_index)
 {
 	int i = 0;
@@ -43,6 +50,22 @@ int find_index(t_node *head, int target_index)
 //			data_min =
 //	}
 //}
+
+int	is_already__sorted(t_node **stack)// retourn 1 si c'est dans l'ordere
+{
+	t_node	*tmp;
+
+	tmp = *stack;
+	while (tmp && tmp->data)
+	{
+		if (tmp->index > tmp->next->index)
+		{
+			return (0);
+		}	
+		tmp = tmp->next;
+	}
+	return (1);
+}
 
 int is_in_upper_half(t_node *head, int index_position)
 {
@@ -102,7 +125,7 @@ void    print_nodes(t_node **node, char c)// print la liste, t_pushswap *ps
     //i = 0;
 	printf("Liste %c\n",c);
 	if (current_node == NULL)
-		ft_printf("c'est vide\n");
+		 ft_printf("c'est vide\n");
     while (current_node!= NULL)//ici changer , avant current_node ->next
     {
 
@@ -140,7 +163,7 @@ long	ft_atol(const char *nptr)
 	return (signe * res);
 }
 
-int p_error()
+int p_error() // write error on the strerr
 {
 	write(2, "Error\n", 6);
 	return (ERROR);

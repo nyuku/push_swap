@@ -6,7 +6,7 @@
 /*   By: angela <angela@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 13:25:21 by angela            #+#    #+#             */
-/*   Updated: 2023/09/03 17:43:19 by angela           ###   ########.fr       */
+/*   Updated: 2023/09/11 18:31:45 by angela           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void    rotate_up(t_node **head, t_pushswap *ps)
     end->next = node_1; // move 2, on avait stocké first pour ca. on pointe l'avant last sur le new last
     node_1->next = NULL; // move 3
 	ps->nombre_op++;
-	ft_printf("rotate\n");
+	//ft_printf("rotate\n");
 
 }
 

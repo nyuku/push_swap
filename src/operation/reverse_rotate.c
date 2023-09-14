@@ -6,7 +6,7 @@
 /*   By: angela <angela@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 13:25:21 by angela            #+#    #+#             */
-/*   Updated: 2023/09/03 17:43:27 by angela           ###   ########.fr       */
+/*   Updated: 2023/09/11 18:31:38 by angela           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void    reverse_rotate(t_node **head,  t_pushswap *ps)
     (*head)->next = node_1; // move 2
     prev_last->next = NULL;
 	ps->nombre_op++;
-	ft_printf("reverse_rotate\n");
+	//ft_printf("reverse_rotate\n");
 
 
 }

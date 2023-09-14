@@ -6,12 +6,14 @@
 /*   By: angela <angela@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 22:19:08 by angela            #+#    #+#             */
-/*   Updated: 2023/09/04 11:28:06 by angela           ###   ########.fr       */
+/*   Updated: 2023/09/14 16:53:56 by angela           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 #include<stdio.h>
+
+
 
 int	main(int ac, char **av)
 {
@@ -28,18 +30,28 @@ int	main(int ac, char **av)
     init_list(&ps);
 	ps.head_b = node_init();
 	fill_list(&ps, av);
-	if ((check_double(ps.head_a)) == 0)
+	if ((check_double(ps.head_a)) == 0) // DOUBLE
 	{
-		ft_printf("error, doublon \n");
-		return(1);
+		free_nodes(&(ps.head_a));// diiiiiifff
+		free_nodes(&(ps.head_b));
+		 free_structure(&ps);
+		//p_error();
 	}
 
 	//fill_test(&(ps.head_b), &ps);
 	index_node(&ps);
-	print_nodes(&(ps.head_a), 'A');
-	printf("\n\n");
-	print_nodes(&(ps.head_b), 'B');
-    printf("\n-------After-----------\n");
+	// if (is_already__sorted(&(ps.head_a)) == 1)
+	// {
+	// 	free_nodes(&(ps.head_a));
+	// 	//free_nodes(&(ps.head_b));
+	// 	return (0);
+	// }
+	
+	
+	//print_nodes(&(ps.head_a), 'A');
+	//printf("\n\n");
+	//print_nodes(&(ps.head_b), 'B');
+    //printf("\n-------After-----------\n");
 //-------------  Test   ----------------------------
 // 	swap(&(ps.head));
 //	rotate_up(&(ps.head_a));
@@ -60,16 +72,16 @@ int	main(int ac, char **av)
 	else
 		small_sorting(&ps);
 
-	printf("\n\n");
-    print_nodes(&(ps.head_a),'A' );
-	printf("\n\n");
-	print_nodes(&(ps.head_b), 'B');
+	// printf("\n\n");
+    // print_nodes(&(ps.head_a),'A' );
+	// printf("\n\n");
+	// print_nodes(&(ps.head_b), 'B');
 
 	free_nodes(&(ps.head_a));
-	free_nodes(&(ps.head_a));
+	free_nodes(&(ps.head_b));// 2x a ici
 	free_structure(&ps);
-	printf("\nNombre d'opération: %d\n",ps.nombre_op);
-	printf("🍕 Ciao Ciao Ciao Ciao Ciao Ciao Ciao Ciao 🍕 \n");
+	// printf("\nNombre d'opération: %d\n",ps.nombre_op);
+	// printf("🍕 Ciao Ciao Ciao Ciao Ciao Ciao Ciao Ciao 🍕 \n");
 	return (0);
 	
 }

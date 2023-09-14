@@ -6,7 +6,7 @@
 /*   By: angela <angela@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 14:28:00 by angnguye          #+#    #+#             */
-/*   Updated: 2023/07/31 00:03:46 by angela           ###   ########.fr       */
+/*   Updated: 2023/09/13 11:00:25 by angela           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,4 +56,8 @@ void	ft_putnbr_fd(int nbr, int fd);
 int		ft_tolower(int character);
 int		ft_toupper(int character);
 void	ft_putendl_fd(char *s, int fd);
+/*◇───────────────────────────────────────────────────────────────◇*\
+* 	Prototypes homemade
+\*◇───────────────────────────────────────────────────────────────◇*/
+void	ft_free_str(char **str);
 #endif
