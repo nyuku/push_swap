@@ -30,6 +30,7 @@ void check_all_arg(char **av, int ac, t_pushswap *ps)
         else
         {
             //printf("c'est faux multi\n");
+            p_error();
              exit(0);
         }
 

@@ -6,7 +6,7 @@
 /*   By: angela <angela@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 22:19:08 by angela            #+#    #+#             */
-/*   Updated: 2023/09/14 16:53:56 by angela           ###   ########.fr       */
+/*   Updated: 2023/10/05 08:03:39 by angela           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +28,18 @@ int	main(int ac, char **av)
         ps.number_numbers = ps.multi_arg;
 
     init_list(&ps);
-	ps.head_b = node_init();
+	// ps.head_b = node_init();
 	fill_list(&ps, av);
 	if ((check_double(ps.head_a)) == 0) // DOUBLE
 	{
 		free_nodes(&(ps.head_a));// diiiiiifff
-		free_nodes(&(ps.head_b));
-		 free_structure(&ps);
-		//p_error();
+		//free_nodes(&(ps.head_b));
+		free_structure(&ps);
+		
+		return (0);
+		
 	}
+	ps.head_b = node_init();
 
 	//fill_test(&(ps.head_b), &ps);
 	index_node(&ps);
