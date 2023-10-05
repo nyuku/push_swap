@@ -58,6 +58,9 @@ void init_list(t_pushswap *ps)//madre, cree la liste
 	        i++;
         }
         //ps->tail = previous_node; // Enregistre l'adresse du dernier nœud
+        //il faut libérer la str qui a contenu les infos
+        if (ps->tab_args_number != NULL)
+            ft_free_str(ps->tab_args_number);
     }
 
 

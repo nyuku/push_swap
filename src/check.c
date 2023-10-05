@@ -5,25 +5,19 @@ void check_all_arg(char **av, int ac, t_pushswap *ps)
     if (ac == 2)
     {
         ps->mono_arg = check_mono_arg(av, ps);
-        if (ps->mono_arg != 0)
+        if (ps->mono_arg == 0)
         {
-            //printf("mono, c'est que des nombres\n");
-            //printf("check_mono_arg d'arguments : %d\n", ps->mono_arg);
-        }
-
-        else
-        {
-            printf("c'est faux mono\n");
-            //stop
+            p_error();
+            exit (0);
         }
     }
     else if (ac > 2)
     {
         if (check_multi_arg(av, ac)!= 0)// un seul argument
         {
-            printf("multi,c'est que des nombres\n");
+            //printf("multi,c'est que des nombres\n");
             ps->multi_arg = check_multi_arg(av, ac);
-            printf("check_multi_arg d'arguments : %d\n", check_multi_arg(av, ac));
+            //printf("check_multi_arg d'arguments : %d\n", check_multi_arg(av, ac));
         }
         else
         {

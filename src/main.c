@@ -16,6 +16,9 @@
 int	main(int ac, char **av)
 {
 	t_pushswap ps;
+
+	if(ac <= 1)
+		return (0);
 	ps.nombre_op = 0;
 	ps.multi_arg = 0;
 	ps.mono_arg = 0;
@@ -26,6 +29,17 @@ int	main(int ac, char **av)
         ps.number_numbers = ps.multi_arg;
 
     init_list(&ps);
+	// ps.head_b = node_init();
+	fill_list(&ps, av);
+	if ((check_double(ps.head_a)) == 0) // DOUBLE
+	{
+		free_nodes(&(ps.head_a));// diiiiiifff
+		//free_nodes(&(ps.head_b));
+		free_structure(&ps);
+
+		return (0);
+
+	}
 	ps.head_b = node_init();
 	fill_list(&ps, av);
 	if ((check_double(ps.head_a)) == 0)
@@ -36,10 +50,18 @@ int	main(int ac, char **av)
 
 	//fill_test(&(ps.head_b), &ps);
 	index_node(&ps);
-	print_nodes(&(ps.head_a), 'A');
-	printf("\n\n");
-	print_nodes(&(ps.head_b), 'B');
-    printf("\n-------After-----------\n");
+	// if (is_already__sorted(&(ps.head_a)) == 1)
+	// {
+	// 	free_nodes(&(ps.head_a));
+	// 	//free_nodes(&(ps.head_b));
+	// 	return (0);
+	// }
+
+
+	//print_nodes(&(ps.head_a), 'A');
+	//printf("\n\n");
+	//print_nodes(&(ps.head_b), 'B');
+    //printf("\n-------After-----------\n");
 //-------------  Test   ----------------------------
 // 	swap(&(ps.head));
 //	rotate_up(&(ps.head_a));
@@ -60,16 +82,16 @@ int	main(int ac, char **av)
 	else
 		small_sorting(&ps);
 
-	printf("\n\n");
-    print_nodes(&(ps.head_a),'A' );
-	printf("\n\n");
-	print_nodes(&(ps.head_b), 'B');
+	// printf("\n\n");
+    // print_nodes(&(ps.head_a),'A' );
+	// printf("\n\n");
+	// print_nodes(&(ps.head_b), 'B');
 
 	free_nodes(&(ps.head_a));
-	free_nodes(&(ps.head_a));
+	free_nodes(&(ps.head_b));// 2x a ici
 	free_structure(&ps);
-	printf("\nNombre d'opération: %d\n",ps.nombre_op);
-	printf("🍕 Ciao Ciao Ciao Ciao Ciao Ciao Ciao Ciao 🍕 \n");
+	// printf("\nNombre d'opération: %d\n",ps.nombre_op);
+	// printf("🍕 Ciao Ciao Ciao Ciao Ciao Ciao Ciao Ciao 🍕 \n");
 	return (0);
 	
 }

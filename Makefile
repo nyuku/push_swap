@@ -68,7 +68,7 @@ MLIBFT			=		@$(MAKE) -C libft
 
 # --------------- Regles --------------------
 
-all:			${NAME} lib
+all:			${NAME} lib clean
 
 lib:
 			@$(MLIBFT)

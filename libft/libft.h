@@ -56,4 +56,8 @@ void	ft_putnbr_fd(int nbr, int fd);
 int		ft_tolower(int character);
 int		ft_toupper(int character);
 void	ft_putendl_fd(char *s, int fd);
+/*◇───────────────────────────────────────────────────────────────◇*\
+* 	Prototypes homemade
+\*◇───────────────────────────────────────────────────────────────◇*/
+void	ft_free_str(char **str);
 #endif

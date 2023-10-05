@@ -11,6 +11,19 @@
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+void	ft_free_str(char **str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		free(str[i]);
+		i++;
+	}
+	free(str);
+}
+
 int find_index(t_node *head, int target_index)
 {
 	int i = 0;
@@ -43,6 +56,22 @@ int find_index(t_node *head, int target_index)
 //			data_min =
 //	}
 //}
+
+int	is_already__sorted(t_node **stack)// retourn 1 si c'est dans l'ordere
+{
+	t_node	*tmp;
+
+	tmp = *stack;
+	while (tmp && tmp->data)
+	{
+		if (tmp->index > tmp->next->index)
+		{
+			return (0);
+		}
+		tmp = tmp->next;
+	}
+	return (1);
+}
 
 int is_in_upper_half(t_node *head, int index_position)
 {
