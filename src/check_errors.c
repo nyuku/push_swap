@@ -6,50 +6,44 @@
 /*   By: angela <angela@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/24 23:13:27 by angela            #+#    #+#             */
-/*   Updated: 2023/09/04 10:33:11 by angela           ###   ########.fr       */
+/*   Updated: 2023/10/06 13:50:23 by angela           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int check_double(t_node *head)
+int check_double(t_node *head) // corriger selon ce qu'on compaqre
 {
 	t_node *temp;
 	t_node *compare;
 
 	temp = head;
-	while (temp != NULL)
+	while (temp!= NULL)
 	{
 		compare = temp;
 		while(compare != NULL)
 		{
-			if(compare == compare->next)
+			if(temp->data == compare->data && temp != compare)// permet de passer au prochain node direct
+			{
+				p_error();
 				return(ERROR);
+			}
+				
 			compare = compare->next;
 		}
 		temp = temp->next;
 	}
 	return(SUCCESS);
 }
-int	check_isnumber(char *str)
-{
-	int	i;
-	
-	i = -1;
-	while (str[++i])
-	{
-		if (!(str[i] >= '0' && str[i] <= '9'))
-			return (ERROR);
-	}
-	return (SUCCESS);
-}
 
-int check_int_limit(char *str)
+int check_int_limit(long l) // atoi le nombre et verifie si max. retourne chiffre
 {
-	long l;
 	
-	l = ft_atol(str);
 	if (l <= INT_MIN || l >= INT_MAX)
+	{
+		p_error();
 		return(ERROR);
-	return (SUCCESS);
+	}
+	return l;
 }
+//soucis avec cette fonction qui renvoie 2 choses.

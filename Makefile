@@ -6,7 +6,7 @@
 #    By: angela <angela@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/24 22:57:11 by angela            #+#    #+#              #
-#    Updated: 2023/09/04 10:44:29 by angela           ###   ########.fr        #
+#    Updated: 2023/10/05 17:26:25 by angela           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -79,6 +79,8 @@ lib:
 
 ${NAME}:		${OBJS}
 				@make -C libft
+				@tput setaf 183; cat ascii_art/cat_make; tput setaf 7
+				@$(BS_TXT)
 				@${CC} ${CFLAGS} ${DEBUG} -o ${NAME} ${OBJS} ${LIBFT}
 				@${CC} ${CFLAGS} -o ${NAME} ${OBJS} ${LIBFT}
 
@@ -102,15 +104,10 @@ start_msg:
 
 # --------------- Service nettoyage --------------------
 clean:
-				@$(BS_TXT)
-				@tput setaf 128; cat ascii_art/cat_clean; tput setaf 13
-				@$(BS_TXT)
 				@${RM} ${OBJS}
 
 
 fclean:			clean
-				@tput setaf 189; cat ascii_art/cat_fclean; tput setaf 9
-				@$(BS_TXT)	
 				@${RM} ${NAME}
 				@echo "$(GREEN)Cleaning succes🌸$(ENDCOLOR)"
 

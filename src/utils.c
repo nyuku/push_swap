@@ -142,11 +142,12 @@ void    print_nodes(t_node **node, char c)// print la liste, t_pushswap *ps
     }
 }
 
-long	ft_atol(const char *nptr)
+long	ft_atol(char *nptr)
 {
+
 	long		i;
 	long		res;
-	char		*str;
+	char	*str;
 	long		signe;
 
 	i = 0;
