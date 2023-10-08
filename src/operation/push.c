@@ -12,7 +12,7 @@
 
 #include "../../includes/push_swap.h"
 
-void push(t_node **origin, t_node **destination, t_pushswap *ps)
+void push(t_node **origin, t_node **destination, t_pushswap *ps, char dest_c)
 {
 	t_node *temp;
 	//on check que la liste est pas vide
@@ -23,7 +23,7 @@ void push(t_node **origin, t_node **destination, t_pushswap *ps)
 		temp->next = *destination; // connect le node au reste de la liste b
 		*destination = temp;// enregistre comme debut de liste
 		ps->nombre_op++;
-		ft_printf("push\n");
+		ft_printf("p%c\n", dest_c);
 
 	}
 }

@@ -45,7 +45,7 @@ int	is_already__sorted(t_node **stack)// retourn 1 si c'est dans l'ordere
 	t_node	*tmp;
 
 	tmp = *stack;
-	while (tmp && tmp->data)
+	while (tmp->next != NULL)
 	{
 		if (tmp->index > tmp->next->index)
 		{

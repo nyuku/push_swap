@@ -25,7 +25,6 @@ int check_double(t_node *head) // corriger selon ce qu'on compaqre
 		{
 			if(temp->data == compare->data && temp != compare)// permet de passer au prochain node direct
 			{
-				p_error();
 				return(ERROR);
 			}
 				

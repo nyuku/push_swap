@@ -101,10 +101,10 @@ int	is_already__sorted(t_node **stack);
 /*◇───────────────────────────────────────────────────────────────◇*\
 * 	Rules
 \*◇───────────────────────────────────────────────────────────────◇*/
-void    swap(t_node **node,t_pushswap *ps);
-void    rotate_up(t_node **head,t_pushswap *ps);
-void    reverse_rotate(t_node **head,t_pushswap *ps);
-void    push(t_node **origin, t_node **destination,t_pushswap *ps);
+void swap(t_node **node, t_pushswap *ps, char stack_c);
+void rotate_up(t_node **head, t_pushswap *ps, char stack_c);
+void reverse_rotate(t_node **head, t_pushswap *ps, char stack_c);
+void push(t_node **origin, t_node **destination, t_pushswap *ps, char dest_c);
 void    double_swap(t_node **node_a, t_node **node_b,t_pushswap *ps);
 void    double_rotate(t_node **node_a,t_node **node_b, t_pushswap *ps);
 void    double_reverse_rotate(t_node **node_a,t_node **node_b, t_pushswap *ps);

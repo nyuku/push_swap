@@ -7,21 +7,40 @@ void check_all_arg(char **av, int ac, t_pushswap *ps)
         ps->mono_arg = check_mono_arg(av, ps); //stock dans notre variagle le nombre de chiffre
         if (ps->mono_arg == 0)
         {
-            p_error();
+	        if (ps->tab_args_number != NULL)
+		        ft_free_double_str(ps->tab_args_number);
+			p_error();
 			exit (0);
         }
+	    //checker que si \t\ t \ t et 1 chiffre
     }
     else if (ac > 2)
     {
         ps->multi_arg = check_multi_arg(av, ac); 
         if (ps->multi_arg == 0)
         {
-			if (ps->tab_args_number != NULL)
-	            ft_free_double_str(ps->tab_args_number);
 			p_error();
 			exit (0);
         }
+//		int i = 1;
+//		int j = 2;
+//		while (i <= ac)
+//		{
+//			while (j <= ac)
+//			{
+//
+//				if (ft_atoi(av[i]) == ft_atoi(av[j]))
+//				{
+//					p_error();
+//					exit(0);
+//				}
+//				j++;
+//			}
+//			i++;
+//			j = 2;
+//		}
     }
+
 }
 
 int	count_words(char const *s, char c)
@@ -60,7 +79,7 @@ int check_mono_arg(char **av, t_pushswap *ps)
 	{
 		if (!check_if_number_str(ps->tab_args_number[i]))
 		{
-			ft_free_double_str(ps->tab_args_number);
+//			ft_free_double_str(ps->tab_args_number);... bug??
 			return (0);
 		}
 		i++;//couac

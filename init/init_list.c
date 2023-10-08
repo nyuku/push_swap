@@ -59,7 +59,7 @@ int fill_list_multi(t_pushswap *ps, char **av)
 	long nb;
 	i = 1;
 	current_node_a = ps->head_a;
-	while (current_node_a != NULL && i < ps->number_numbers)
+	while (current_node_a != NULL && i <= ps->number_numbers)
 	{
 		nb = ft_atol(av[i]); 
 		if (check_int_limit(nb)== 0)
@@ -80,9 +80,11 @@ int fill_list_mono(t_pushswap *ps)
 
 	i = 0;
 	current_node_a = ps->head_a;
-	while (current_node_a != NULL && i < ps->number_numbers)
+	while (current_node_a != NULL && i <= ps->number_numbers)
 	{
 		nb = ft_atol(ps->tab_args_number[i]);
+		if (check_int_limit(nb)== 0)
+			return (ERROR);
 		current_node_a->data = nb;
 		current_node_a = current_node_a->next;
 		i++;

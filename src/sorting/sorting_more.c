@@ -23,15 +23,15 @@ void push_b_chunks(t_pushswap *ps, int chunks, int round)
 			break;
 		if ((ps->head_a->index <= limit) && (ps->head_a->index >= (limit - (chunks - 1))))
 		{
-			push(&(ps->head_a), &(ps->head_b), ps);
+			push(&(ps->head_a), &(ps->head_b), ps, 'b');
 			if ((list_size(ps->head_b) >= 2) && (ps->head_b->index > border))
 			{
-				rotate_up(&(ps->head_b), ps);
+				rotate_up(&(ps->head_b), ps, 'b');
 			}
 			i++;
 		}
 		else
-			rotate_up(&(ps->head_a), ps);
+			rotate_up(&(ps->head_a), ps, 'a');
 	}
 }
 
@@ -49,12 +49,12 @@ void b_to_a(t_pushswap *ps)
 		{
 			//variante where i am
 			if (upper == 1)
-				rotate_up(&(ps->head_b), ps);
+				rotate_up(&(ps->head_b), ps, 'b');
 			else if (upper == 0)
-				reverse_rotate(&(ps->head_b), ps);
+				reverse_rotate(&(ps->head_b), ps, 'b');
 		}
 		upper = 0;
-		push(&(ps->head_b), &(ps->head_a), ps);
+		push(&(ps->head_b), &(ps->head_a), ps, 'a');
 	}
 }
 
@@ -110,162 +110,3 @@ int get_max_index(t_node *head)
 
 	return max_index;
 }
-
-//void    push_b_chunks(t_pushswap *ps, int chunks, int round)// trie 20 par 20
-//// directement travailler avec le head pas le temp.
-//{
-//
-//	int i = 1;
-//	int limit = round * chunks;
-//	int border = limit / 2;
-//	while (i <= chunks)
-//	{
-//		if (ps->head_a == NULL)
-//			break;
-//		if ((ps->head_a->index <= limit) && (ps->head_a->index >= (limit - (chunks - 1))))
-//		{
-//			push(&(ps->head_a), &(ps->head_b), ps);
-//			if (( list_size(ps->head_b) >= 2 ) && (ps->head_b->index > border))
-//			{
-//
-//				rotate_up(&(ps->head_b), ps);
-//			}
-//			i++;
-//		}
-//		else
-//			rotate_up(&(ps->head_a), ps);
-//	}
-//}
-//
-//void b_to_a(t_pushswap *ps)
-//{
-//	int min_index;
-//
-//	while (list_size(ps->head_b) != 0)
-//	{
-//		min_index = get_min_index(ps->head_b);
-//		while (ps->head_b->index != min_index)
-//			rotate_up(&(ps->head_b), ps);
-//		push(&(ps->head_b), &(ps->head_a), ps);
-//	}
-//}
-//
-//void big_sort(t_pushswap *ps)
-//{
-//	int chunk_done = 1;
-//	int chunk;
-//
-//	if (list_size(ps->head_a) <= 100)
-//		chunk = 20;
-//	else
-//		chunk = 70;
-//
-//	while (list_size(ps->head_a) > 0)
-//	{
-//		push_b_chunks(ps, chunk, chunk_done);
-//		chunk_done++;
-//	}
-//	b_to_a(ps);
-//}
-//
-//
-//
-//
-
-
-
-
-
-
-
-
-//madre
-//void    sorting_push_b(t_pushswap *ps, int chunks)
-//{
-//	int round = 1;
-//	//int arg = ps->number_numbers;
-//
-//	while(list_size(ps->head_a) >= 1)
-//
-//		//(arg/chunks > 0)// tant qu'il y a qlqch dedans..apelle n x 20 bah non. troune plusieurs fois
-//	{
-//		push_b_chunks(ps, chunks, round);// trie (chunks)20 par 20 de sur
-//		round++;
-//		//arg--;
-//	}
-//}
-//
-////step 1
-//void    push_b_chunks(t_pushswap *ps, int chunks, int round)// trie 20 par 20
-//// directement travailler avec le head pas le temp.
-//{
-//
-//	int i = 1;
-//	int limit = round * chunks;
-//	int border = limit / 2;
-//	while (i <= chunks)
-//	{
-//		if (ps->head_a == NULL)
-//			break;
-//		if ((ps->head_a->index <= limit) && (ps->head_a->index >= (limit - (chunks - 1))))
-//		{
-//			push(&(ps->head_a), &(ps->head_b), ps);
-//			if (( list_size(ps->head_b) >= 2 ) && (ps->head_b->index > border))
-//			{
-//
-//				rotate_up(&(ps->head_b), ps);
-//			}
-//			i++;
-//		}
-//		else
-//			rotate_up(&(ps->head_a), ps);
-//	}
-//}
-//
-////descend dans b si fat
-//
-////probleme heeeere
-//void    push_down_b(t_pushswap *ps, int limit_max)//verifie le node si fait parti 1/2 chunks sup
-//{
-//	int border = limit_max / 2;
-//
-//	if (ps->head_b->index > border)
-//		rotate_up(&(ps->head_b), ps);
-//}
-//
-//
-//
-//
-////choisi qui prendre en head pour push en A
-//void    sorting_in_b(t_pushswap *ps)//trier b pour push
-//// verifier les 2 extremite
-//{
-//	t_node *last;
-//
-//	//on doit chercher le plus grand
-//	int index = ps->number_numbers;
-//	// si le node voulu est au debut de la liste
-//
-//	while (index > 0)
-//	{
-//		last = last_node(ps->head_b);
-//		if (ps->head_b->index == index)
-//		{
-//			push(&(ps->head_b), &(ps->head_a), ps);
-//		}
-//		else if (last->index == index)
-//		{
-//			reverse_rotate(&(ps->head_b), ps);
-//			push(&(ps->head_b), &(ps->head_a), ps);
-//		}
-//		index--;
-//	}
-//}
-//
-
-
-
-
-//le soucis c'est que ca marche pour le 1ere tranche mais pas pour les prochaine...
-//meilleur tant de rotate les grand quand on met dedans
-

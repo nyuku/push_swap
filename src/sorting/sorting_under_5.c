@@ -28,7 +28,7 @@ void    small_sorting(t_pushswap *ps)
 void    duo(t_pushswap *ps)
 {
 	if (ps->head_a->index != 1)
-		swap(&(ps->head_a), ps);
+		swap(&(ps->head_a), ps,'a');
 }
 
 
@@ -43,25 +43,25 @@ void    threesome(t_pushswap *ps, int sorting_for)// sera 0 si seul, sinon pour 
 {
 	if (ps->head_a->index == (1 +sorting_for) && ps->head_a->next->index == (3+sorting_for) && ps->head_a->next->next->index == (2 +sorting_for))
 	{
-		swap(&(ps->head_a), ps);
-		rotate_up(&(ps->head_a), ps);
+		swap(&(ps->head_a), ps,'a');
+		rotate_up(&(ps->head_a), ps,  'a');
 	}
 	else if (ps->head_a->index == (2 +sorting_for) && ps->head_a->next->index == (1 +sorting_for) && ps->head_a->next->next->index == (3 +sorting_for))
 	{
-		swap(&(ps->head_a), ps);
+		swap(&(ps->head_a), ps, 'a');
 	}
 	else if (ps->head_a->index == (3 +sorting_for) && ps->head_a->next->index == (2 +sorting_for) && ps->head_a->next->next->index == (1 +sorting_for))
 	{
-		swap(&(ps->head_a), ps);
-		reverse_rotate(&(ps->head_a), ps);
+		swap(&(ps->head_a), ps, 'a');
+		reverse_rotate(&(ps->head_a), ps, 'a');
 	}
 	else if (ps->head_a->index == (3 +sorting_for) && ps->head_a->next->index == (1 +sorting_for) && ps->head_a->next->next->index == (2 +sorting_for))
 	{
-		rotate_up(&(ps->head_a), ps);
+		rotate_up(&(ps->head_a), ps,'a');
 	}
 	else if (ps->head_a->index == (2 +sorting_for) && ps->head_a->next->index == (3 +sorting_for) && ps->head_a->next->next->index == (1 +sorting_for))
 	{
-		reverse_rotate(&(ps->head_a), ps);
+		reverse_rotate(&(ps->head_a), ps, 'a');
 	}
 }
 
@@ -74,15 +74,15 @@ void    sorting_for(t_pushswap *ps, int five_sort)
 	t_node *prout;
 	prout = last_node(ps->head_a);
 	if (prout->index == 1)// si dernier == 1
-		reverse_rotate(&(ps->head_a), ps);
+		reverse_rotate(&(ps->head_a), ps,'a');
 	else
 	{
 		while ((five_sort == 0 && ps->head_a->index != 1) ||(five_sort == 1 && ps->head_a->index != 2)) // on cherche a mettre le n-1 au tout dessus
-			rotate_up(&ps->head_a, ps);// max 3
+			rotate_up(&ps->head_a, ps, 'a');// max 3
 	}
-	push(&(ps->head_a), &(ps->head_b), ps);
+	push(&(ps->head_a), &(ps->head_b), ps, 'b');
 	threesome(ps, 1);
-	push(&(ps->head_b),&(ps->head_a), ps);
+	push(&(ps->head_b), &(ps->head_a), ps, 'a');
 }
 
 void    sorting_five(t_pushswap *ps)
@@ -93,13 +93,13 @@ void    sorting_five(t_pushswap *ps)
 	t_node *prout;
 	prout = last_node(ps->head_a);
 	if (prout->index == 1)// si dernier == 1
-		reverse_rotate(&(ps->head_a), ps);
+		reverse_rotate(&(ps->head_a), ps, 'a');
 	else if((ps->head_a->index != 1))
 	{
 		while (ps->head_a->index != 1) // on cherche a mettre le n-1 au tout dessus
-			rotate_up(&ps->head_a, ps);// max 4
+			rotate_up(&ps->head_a, ps,'a');// max 4
 	}
-	push(&(ps->head_a), &(ps->head_b), ps);
+	push(&(ps->head_a), &(ps->head_b), ps, 'b');
 	sorting_for(ps, 1);
-	push(&(ps->head_b),&(ps->head_a), ps);
+	push(&(ps->head_b), &(ps->head_a), ps, 'a');
 }
