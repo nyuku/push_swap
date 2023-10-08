@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-void	ft_free_str(char **str)
+void	ft_free_double_str(char **str)
 {
 	int	i;
 
@@ -39,23 +39,6 @@ int find_index(t_node *head, int target_index)
 
 	return -1; // Index non trouvé dans la liste
 }
-
-//
-//int choose_small(t_node *node)
-//{
-//	int i = 1;
-//	int data_min = 0;
-//	t_node *temp;
-//
-//	temp = node;
-//	data_min = node->data;
-//	while (node != NULL)
-//	{
-//		temp = temp->next;// on a deja stocké le 1er, on passe au suivant
-//		if (temp->data < data_min)
-//			data_min =
-//	}
-//}
 
 int	is_already__sorted(t_node **stack)// retourn 1 si c'est dans l'ordere
 {

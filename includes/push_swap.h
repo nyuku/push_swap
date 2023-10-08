@@ -64,11 +64,11 @@ typedef struct	s_pushswap
 \*◇───────────────────────────────────────────────────────────────◇*/
 int 	check_mono_arg(char **av, t_pushswap *ps);
 int 	check_multi_arg(char **argv, int argc);
-void 	check_all_arg(char **av, int ac, t_pushswap *ps);
+void check_all_arg(char **av, int ac, t_pushswap *ps);
 int 	check_if_number_str(char *str);
 
 
-void    init_list(t_pushswap *ps);//madre
+void    init_list(t_pushswap *ps);
 int fill_list_multi(t_pushswap *ps, char **av);
 int fill_list_mono(t_pushswap *ps);
 void	fill_list(t_pushswap *ps, char **av);
@@ -96,7 +96,7 @@ int    list_size(t_node *node);
 void    fill_test(t_node **node, t_pushswap *ps);
 void    index_node(t_pushswap *ps);
 void    find_biggest(t_pushswap *ps);
-int	is_already__sorted(t_node **stack);// retourn 1 si c'est dans l'ordere
+int	is_already__sorted(t_node **stack);
 
 /*◇───────────────────────────────────────────────────────────────◇*\
 * 	Rules
@@ -135,5 +135,5 @@ int find_index(t_node *head, int target_index);
 int is_in_upper_half(t_node *head, int index_position);// retourn 1 si en haut, 0 si en bas
 int get_max_index(t_node *head);
 
-void deal_with_args(t_pushswap *ps, int ac, char **av);
+void deal_with_args(t_pushswap *ps, char **av);
 #endif

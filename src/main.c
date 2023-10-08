@@ -13,20 +13,19 @@
 #include "../includes/push_swap.h"
 #include<stdio.h>
 
-void deal_with_args(t_pushswap *ps, int ac, char **av)// appel le bon fill list selon le type d'argument
+void deal_with_args(t_pushswap *ps, char **av)
 {
-	if (ps->mono_arg != 0 && ac == 2)// c'est un seul argument "plop plop plop"
+	if (ps->mono_arg != 0)
 	{
-		ps->number_numbers = ps->mono_arg; // transfert info vers une autre variable
 		init_list(ps);
 		fill_list_mono(ps);
-
 	}
-	else if (ac > 2)
+	else
 	{
 		ps->number_numbers = ps->multi_arg;
 		init_list(ps);
 		fill_list_multi(ps, av);
+
 	}
 }
 
@@ -39,33 +38,24 @@ int	main(int ac, char **av)
 	ps.nombre_op = 0;
 	ps.multi_arg = 0;
 	ps.mono_arg = 0;
-//	init_list(&ps);
-	check_all_arg(av, ac, &ps);//check simono arg et multi et elligible
-
-	deal_with_args(&ps, ac, av);// rempli la liste
-	//fill_list(&ps, av);
-//	print_nodes(&(ps.head_a), 'A');
-//	if ((check_double(ps.head_a)) == 0) // DOUBLE
-//	{
-//		ft_printf("plop\n");
-//		free_nodes(&(ps.head_a));// diiiiiifff
-//		//free_nodes(&(ps.head_b));
-//		free_structure(&ps);
-//		return (0);
-//	}
-	///////////// trie
-	ps.head_b = node_init();
+	check_all_arg(av, ac, &ps);
+	deal_with_args(&ps, av);
 	index_node(&ps);
-
+	if (is_already__sorted(&(ps.head_a)) == 0 )
+	{
+		free_nodes(&(ps.head_a));
+		free_structure(&ps);
+		return(0);
+	}
+	ps.head_b = node_init();
 
 	if (ps.number_numbers > 5)
 		big_sort(&ps);
 	else
 		small_sorting(&ps);
 	free_nodes(&(ps.head_a));
-	free_nodes(&(ps.head_b));// 2x a ici
+	free_nodes(&(ps.head_b));
 	free_structure(&ps);
 
 	return (0);
-	
 }

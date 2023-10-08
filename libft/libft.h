@@ -59,5 +59,5 @@ void	ft_putendl_fd(char *s, int fd);
 /*◇───────────────────────────────────────────────────────────────◇*\
 * 	Prototypes homemade
 \*◇───────────────────────────────────────────────────────────────◇*/
-void	ft_free_str(char **str);
+void	ft_free_double_str(char **str);
 #endif
