@@ -77,7 +77,7 @@ int check_if_number_str(char *str)
     i = 0;
     if (!str[i])
         return (0);
-    if (str[i] == '-')
+    if (str[i] == '-' || str[i] == '+')
         i++;
     while (str[i] != '\0')
     {
