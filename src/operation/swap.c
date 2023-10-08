@@ -12,32 +12,23 @@
 
 #include "../../includes/push_swap.h"
 
-
-void swap(t_node **node, t_pushswap *ps, char stack_c)//donne le 1er node
+void	swap(t_node **node, t_pushswap *ps, char stack_c)
 {
-    if (*node == NULL || (*node)->next == NULL)
-        return;
-	// [node 1] -> [node2]-> [node3] avant
-	// [node 2] -> [node1]-> [node3] apres
-	//l'addresse d'un noeud...et le pointeur de celui avant sauf pour le 1er
-	
-	//init node1 et node 2 sont des temp
-    t_node *node1 = *node;
-    t_node *node2 = (*node)->next;
-	
-	//[node1]-> [node3]
-	//le pointeur de node-1 recupere le pointeur next de node-2(le node 3)
-    node1->next = node2->next;
-	
-	//[node 2] -> [node1]
-	//le pointeur de node-2 pointe vers le noeud 1(son adresse)
-    node2->next = node1;
-    *node = node2;
+	t_node	*node1;
+	t_node	*node2;
+
+	if (*node == NULL || (*node)->next == NULL)
+		return ;
+	node1 = *node;
+	node2 = (*node)->next;
+	node1->next = node2->next;
+	node2->next = node1;
+	*node = node2;
 	ps->nombre_op++;
-	ft_printf("s%c\n",stack_c);
+	ft_printf("s%c\n", stack_c);
 }
 
-void double_swap(t_node **node_a, t_node **node_b, t_pushswap *ps)
+void	double_swap(t_node **node_a, t_node **node_b, t_pushswap *ps)
 {
 	swap(node_a, ps, 'a');
 	swap(node_b, ps, 'b');

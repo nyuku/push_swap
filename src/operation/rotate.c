@@ -12,34 +12,22 @@
 
 #include "../../includes/push_swap.h"
 
-
-
-//on va jusqu a la fin de la liste et on ajoute le 1er node
-// [node1] -> [node2] -> [node3] -> [node4] -> [node5] avant <--- push
-// [node2] <- [node3] <- [node4] <- [node5] <- [node1] apres
-// le 1er devient dernier -> pour savoir lequel mettre a NULL
-void rotate_up(t_node **head, t_pushswap *ps, char stack_c)
-//head correspond a 1er de la liste, first
+void	rotate_up(t_node **head, t_pushswap *ps, char stack_c)
 {
-    t_node *node_1;
-    t_node *end;
+	t_node	*node_1;
+	t_node	*end;
 
-    end = last_node(*head);
-    node_1 = *head;// stocke le temps que le 1er change et c'est le node en soit qu'on deplace, node1.
-
-    *head = (*head)->next; // move 1, on modifie directement la liste. 2nd ->1er
-
-    end->next = node_1; // move 2, on avait stocké first pour ca. on pointe l'avant last sur le new last
-    node_1->next = NULL; // move 3
+	end = last_node(*head);
+	node_1 = *head;
+	*head = (*head)->next;
+	end->next = node_1;
+	node_1->next = NULL;
 	ps->nombre_op++;
-	ft_printf("r%c\n",stack_c);
-
+	ft_printf("r%c\n", stack_c);
 }
 
-void double_rotate(t_node **node_a,t_node **node_b, t_pushswap *ps)
+void	double_rotate(t_node **node_a, t_node **node_b, t_pushswap *ps)
 {
 	rotate_up(node_a, ps, 'a');
-	rotate_up(node_b, ps,  'b');
+	rotate_up(node_b, ps, 'b');
 }
-
-

@@ -11,17 +11,22 @@
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
-void push_b_chunks(t_pushswap *ps, int chunks, int round)
-{
-	int i = 1;
-	int limit = round * chunks;
-	int border = limit / 2;
 
+void	push_b_chunks(t_pushswap *ps, int chunks, int round)
+{
+	int	i;
+	int	limit;
+	int	border;
+
+	limit = round * chunks;
+	border = limit / 2;
+	i = 1;
 	while (i <= chunks)
 	{
 		if (ps->head_a == NULL)
-			break;
-		if ((ps->head_a->index <= limit) && (ps->head_a->index >= (limit - (chunks - 1))))
+			break ;
+		if ((ps->head_a->index <= limit) && \
+			(ps->head_a->index >= (limit - (chunks - 1))))
 		{
 			push(&(ps->head_a), &(ps->head_b), ps, 'b');
 			if ((list_size(ps->head_b) >= 2) && (ps->head_b->index > border))
@@ -35,19 +40,20 @@ void push_b_chunks(t_pushswap *ps, int chunks, int round)
 	}
 }
 
-void b_to_a(t_pushswap *ps)
+void	b_to_a(t_pushswap *ps)
 {
-	int max_index;
-	int upper = 0;
-	while (list_size(ps->head_b) != 0)// tant que b n'est pas vide
-	{
-		max_index = get_max_index(ps->head_b);// on a l'index le plus grand..
-		int index_position = find_index(ps->head_b, max_index);// va chercher la position ou se trouve le plus grand
+	int	max_index;
+	int	upper;
+	int	index_position;
 
+	upper = 0;
+	while (list_size(ps->head_b) != 0)
+	{
+		max_index = get_max_index(ps->head_b);
+		index_position = find_index(ps->head_b, max_index);
 		upper = is_in_upper_half(ps->head_b, index_position);
 		while (ps->head_b->index != max_index)
 		{
-			//variante where i am
 			if (upper == 1)
 				rotate_up(&(ps->head_b), ps, 'b');
 			else if (upper == 0)
@@ -58,16 +64,16 @@ void b_to_a(t_pushswap *ps)
 	}
 }
 
-void big_sort(t_pushswap *ps)
+void	big_sort(t_pushswap *ps)
 {
-	int chunk_done = 1;
-	int chunk;
+	int	chunk_done;
+	int	chunk;
 
+	chunk_done = 1;
 	if (list_size(ps->head_a) <= 100)
 		chunk = 20;
 	else
 		chunk = 70;
-
 	while (list_size(ps->head_a) > 0)
 	{
 		push_b_chunks(ps, chunk, chunk_done);
@@ -76,37 +82,34 @@ void big_sort(t_pushswap *ps)
 	b_to_a(ps);
 }
 
-
-//---------------------------------------------------------------------------------
-int get_min_index(t_node *head)
+int	get_min_index(t_node *head)
 {
-	int min_index = head->index;
-	t_node *current = head->next;
+	int		min_index;
+	t_node	*current;
 
+	min_index = head->index;
+	current = head->next;
 	while (current != NULL)
 	{
 		if (current->index < min_index)
-		{
 			min_index = current->index;
-		}
 		current = current->next;
 	}
-
-	return min_index;
+	return (min_index);
 }
-int get_max_index(t_node *head)
-{
-	int max_index = head->index;
-	t_node *current = head->next;
 
+int	get_max_index(t_node *head)
+{
+	int		max_index;
+	t_node	*current;
+
+	current = head->next;
+	max_index = head->index;
 	while (current != NULL)
 	{
 		if (current->index > max_index)
-		{
 			max_index = current->index;
-		}
 		current = current->next;
 	}
-
-	return max_index;
+	return (max_index);
 }
