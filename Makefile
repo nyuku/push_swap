@@ -35,15 +35,18 @@ SRC				=	./src/main.c \
 					./src/ft_printf/ft_printf.c \
 					./src/ft_printf/s_c_p_d_i.c \
 				 	./src/ft_printf/u_x_X.c \
-					./src/check_errors.c \
 					./src/utils.c \
-					./src/check.c \
-					./init/init_list.c \
+					./src/utils_bis.c \
+					./src/check/check.c \
+					./src/check/check_errors.c \
+					./src/init/init_list.c \
+					./src/init/free_utils.c \
 					./src/operation/swap.c \
 					./src/operation/rotate.c \
 					./src/operation/reverse_rotate.c \
 					./src/operation/push.c \
 					./src/sorting/sorting_under_5.c \
+					./src/sorting/sorting_under_5_bis.c \
 					./src/sorting/sorting_more.c \
 					./src/sorting/index.c
 					
@@ -111,7 +114,7 @@ fclean:			clean
 				@${RM} ${NAME}
 				@echo "$(GREEN)Cleaning succes🌸$(ENDCOLOR)"
 
-re:				fclean all 
+re:				fclean all clean
 				@tput setaf 183; cat ascii_art/cat; tput setaf 7
 				@$(BS_TXT)
 
