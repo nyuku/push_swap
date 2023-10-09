@@ -12,37 +12,34 @@
 
 #include "../../includes/push_swap.h"
 
-int check_double(t_node *head) // corriger selon ce qu'on compaqre
+int	check_double(t_node *head)
 {
-	t_node *temp;
-	t_node *compare;
+	t_node	*temp;
+	t_node	*compare;
 
 	temp = head;
-	while (temp!= NULL)
+	while (temp != NULL)
 	{
 		compare = temp;
-		while(compare != NULL)
+		while (compare != NULL)
 		{
-			if(temp->data == compare->data && temp != compare)// permet de passer au prochain node direct
+			if (temp->data == compare->data && temp != compare)
 			{
 				return(ERROR);
 			}
-				
 			compare = compare->next;
 		}
 		temp = temp->next;
 	}
-	return(SUCCESS);
+	return (SUCCESS);
 }
 
-int check_int_limit(long l) // atoi le nombre et verifie si max. retourne chiffre
+int	check_int_limit(long l)
 {
-	
 	if (l <= INT_MIN || l >= INT_MAX)
 	{
 		p_error();
-		return(ERROR);
+		return (ERROR);
 	}
-	return l;
+	return (l);
 }
-//soucis avec cette fonction qui renvoie 2 choses.

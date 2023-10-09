@@ -1,1 +1,4 @@
-CMakeLists.txt not found in /Users/lo/push_swap Select CMakeLists.txt
+/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=/Applications/CLion.app/Contents/bin/ninja/mac/ninja -G Ninja /Users/angela/42/puuuuush
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /Users/angela/42/puuuuush/cmake-build-debug

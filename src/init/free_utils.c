@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_list.c                                        :+:      :+:    :+:   */
+/*   free_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: angela <angela@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/22 22:18:53 by angela            #+#    #+#             */
-/*   Updated: 2023/10/06 14:33:34 by angela           ###   ########.fr       */
+/*   Created: 2023/10/09 10:04:08 by angela            #+#    #+#             */
+/*   Updated: 2023/10/09 10:04:09 by angela           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ void	free_structure(t_pushswap *ps)
 	int	i;
 
 	i = 0;
-	if (ps->tab_args_number == NULL || ps->tab_args_number[i] == NULL) {
+	if (ps->tab_args_number == NULL || ps->tab_args_number[i] == NULL)
+	{
 		return ;
 	}
 	i = -1;

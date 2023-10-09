@@ -11,14 +11,13 @@
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-#include<stdio.h>
 
-void deal_with_args(t_pushswap *ps, char **av)
+void	deal_with_args(t_pushswap *ps, char **av)
 {
 	if (ps->mono_arg != 0)
 	{
 		init_list(ps);
-		if (fill_list_mono(ps) == ERROR) // new
+		if (fill_list_mono(ps) == ERROR)
 		{
 			p_error();
 			free_nodes(&(ps->head_a));
@@ -30,7 +29,7 @@ void deal_with_args(t_pushswap *ps, char **av)
 	{
 		ps->number_numbers = ps->multi_arg;
 		init_list(ps);
-		if (fill_list_multi(ps, av) == ERROR) // new
+		if (fill_list_multi(ps, av) == ERROR)
 		{
 			p_error();
 			free_nodes(&(ps->head_a));
@@ -40,7 +39,7 @@ void deal_with_args(t_pushswap *ps, char **av)
 	}
 }
 
-static void init_main(t_pushswap *ps, int ac)
+static void	init_main(t_pushswap *ps, int ac)
 {
 	if (ac <= 1)
 		exit (1);
@@ -50,7 +49,7 @@ static void init_main(t_pushswap *ps, int ac)
 	ps->tab_args_number = NULL;
 }
 
-static void check_args_parsed(t_pushswap *ps)
+static	void	check_args_parsed(t_pushswap *ps)
 {
 	if (check_double(ps->head_a) == ERROR)
 	{
@@ -60,8 +59,9 @@ static void check_args_parsed(t_pushswap *ps)
 		exit(1);
 	}
 	index_node(ps);
-	if (is_already__sorted(&(ps->head_a)) != 0 )
+	if (is_already__sorted(&(ps->head_a)) != 0)
 	{
+		//ft_printf("plooop\n");
 		free_nodes(&(ps->head_a));
 		free_structure(ps);
 		exit(0);
@@ -71,8 +71,8 @@ static void check_args_parsed(t_pushswap *ps)
 
 int	main(int ac, char **av)
 {
-	t_pushswap ps;
-	
+	t_pushswap	ps;
+
 	init_main(&ps, ac);
 	check_all_arg(av, ac, &ps);
 	deal_with_args(&ps, av);
