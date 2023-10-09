@@ -36,7 +36,7 @@ void	index_node(t_pushswap *ps)
 	find_biggest(ps);
 	ps->biggest->index = i;
 	i--;
-	while (i > 1)
+	while (i >= 1) // change patate
 	{
 		temp = ps->head_a;
 		temp_big = NULL;

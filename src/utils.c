@@ -12,21 +12,21 @@
 
 #include "../includes/push_swap.h"
 
-void	ft_free_double_str(char **str)
-{
-	int	i;
-
-	if (*str != NULL)
-	{
-		i = 0;
-		while (str[i])
-		{
-			free(str[i]);
-			i++;
-		}
-		free(str);
-	}
-}
+//void	ft_free_double_str(char **str)
+//{
+//	int	i;
+//
+//	if (*str != NULL)
+//	{
+//		i = 0;
+//		while (str[i])
+//		{
+//			free(str[i]);
+//			i++;
+//		}
+//		free(str);
+//	}
+//}
 
 int	find_index(t_node *head, int target_index)
 {
