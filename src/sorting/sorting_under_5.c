@@ -32,9 +32,7 @@ void	duo(t_pushswap *ps)
 
 static void	threesome_bis(t_pushswap *ps, int sorting_for)
 {
-	if (ps->head_a->index == (2 + sorting_for) && \
-		ps->head_a->next->index == (3 + sorting_for) && \
-		ps->head_a->next->next->index == (1 + sorting_for))
+	if (ps->head_a->index == (2 + sorting_for) && ps->head_a->next->index == (3 + sorting_for) && ps->head_a->next->next->index == (1 + sorting_for))
 		reverse_rotate(&(ps->head_a), ps, 'a');
 }
 
@@ -71,7 +69,7 @@ void	sorting_for(t_pushswap *ps, int five_sort)
 	t_node	*prout;
 
 	prout = last_node(ps->head_a);
-	if (prout->index == 1)
+	if (prout->index == 1) // possible de faire list size - (list size-1)
 		reverse_rotate(&(ps->head_a), ps, 'a');
 	else
 	{
@@ -80,6 +78,6 @@ void	sorting_for(t_pushswap *ps, int five_sort)
 			rotate_up(&ps->head_a, ps, 'a');
 	}
 	push(&(ps->head_a), &(ps->head_b), ps, 'b');
-	threesome(ps, 1);
+	threesome(ps, 2);// changer en 2 au lieu de 1
 	push(&(ps->head_b), &(ps->head_a), ps, 'a');
 }

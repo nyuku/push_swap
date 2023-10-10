@@ -54,7 +54,7 @@ int	fill_list_multi(t_pushswap *ps, char **av)
 	while (current_node_a != NULL && i <= ps->number_numbers)
 	{
 		nb = ft_atol(av[i]);
-		if (check_int_limit(nb) == 0)
+		if (check_int_limit(nb) == ERROR)
 			return (ERROR);
 		current_node_a->data = (int)nb ;
 		current_node_a = current_node_a->next;

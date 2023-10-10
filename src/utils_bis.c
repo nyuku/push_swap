@@ -21,6 +21,7 @@ t_node	*last_node(t_node *head)
 	return (head);
 }
 
+
 long	ft_atol(char *nptr)
 {
 	long	i;
@@ -53,3 +54,4 @@ int	p_error(void)
 	write(2, "Error\n", 6);
 	return (ERROR);
 }
+

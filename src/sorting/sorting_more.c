@@ -12,6 +12,24 @@
 
 #include "../../includes/push_swap.h"
 
+void	big_sort(t_pushswap *ps)
+{
+	int	chunk_done;
+	int	chunk;
+
+	chunk_done = 1;
+	if (list_size((ps->head_a)) <= 100) // chnage ps->head_a)
+		chunk = 20;
+	else
+		chunk = 70;
+	while (list_size(ps->head_a) > 0)
+	{
+		push_b_chunks(ps, chunk, chunk_done);
+		chunk_done++;
+	}
+	b_to_a(ps);
+}
+
 void	push_b_chunks(t_pushswap *ps, int chunks, int round)
 {
 	int	i;
@@ -47,7 +65,7 @@ void	b_to_a(t_pushswap *ps)
 	int	index_position;
 
 	upper = 0;
-	while (list_size(ps->head_b) != 0)
+	while (list_size(ps->head_b) > 1) // change != 0
 	{
 		max_index = get_max_index(ps->head_b);
 		index_position = find_index(ps->head_b, max_index);
@@ -64,23 +82,6 @@ void	b_to_a(t_pushswap *ps)
 	}
 }
 
-void	big_sort(t_pushswap *ps)
-{
-	int	chunk_done;
-	int	chunk;
-
-	chunk_done = 1;
-	if (list_size(ps->head_a) <= 100)
-		chunk = 20;
-	else
-		chunk = 70;
-	while (list_size(ps->head_a) > 0)
-	{
-		push_b_chunks(ps, chunk, chunk_done);
-		chunk_done++;
-	}
-	b_to_a(ps);
-}
 
 int	get_min_index(t_node *head)
 {

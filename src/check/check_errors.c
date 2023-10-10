@@ -38,5 +38,5 @@ int	check_int_limit(long l)
 {
 	if (l <= INT_MIN || l >= INT_MAX)
 		return (ERROR);
-	return (l);
+	return (SUCCESS);//change
 }

@@ -12,6 +12,17 @@
 
 #include "../includes/push_swap.h"
 
+void print_nodes(t_node **node, char c) {
+	t_node* current = *node;
+
+	printf("Contenu de la liste %c: ", c);
+	while (current != NULL) {
+		printf("%d ", current->data);
+		current = current->next;
+	}
+	printf("\n");
+}
+
 void	deal_with_args(t_pushswap *ps, char **av)
 {
 	if (ps->mono_arg != 0)
@@ -61,7 +72,6 @@ static	void	check_args_parsed(t_pushswap *ps)
 	index_node(ps);
 	if (is_already__sorted(&(ps->head_a)) != 0)
 	{
-		//ft_printf("plooop\n");
 		free_nodes(&(ps->head_a));
 		free_structure(ps);
 		exit(0);
@@ -81,8 +91,13 @@ int	main(int ac, char **av)
 		big_sort(&ps);
 	else
 		small_sorting(&ps);
+	printf("nombre de chiffre %d\n", list_size((ps.head_a)));
+	print_nodes(&(ps.head_a), 'A');
+	printf("\n\n----------------------\n\n");
+
 	free_nodes(&(ps.head_a));
 	free_nodes(&(ps.head_b));
+	print_nodes(&(ps.head_b), 'B');
 	free_structure(&ps);
 	return (0);
 }

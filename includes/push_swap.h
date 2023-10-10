@@ -126,6 +126,7 @@ void    push_down_b(t_pushswap *ps, int limit_max);
 void    sorting_in_b(t_pushswap *ps);
 
 void a_to_b(t_pushswap *ps, int chunk, int chunk_done);
+void	b_to_a(t_pushswap *ps);
 int get_min_index(t_node *head);
 
 int get_min_index(t_node *head);

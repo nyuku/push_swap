@@ -77,6 +77,7 @@ int	list_size(t_node *node)
 	int	i;
 
 	i = 0;
+
 	while (node != NULL)
 	{
 		i++;
@@ -84,3 +85,4 @@ int	list_size(t_node *node)
 	}
 	return (i);
 }
+
