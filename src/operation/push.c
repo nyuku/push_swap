@@ -15,14 +15,14 @@
 void	push(t_node **origin, t_node **destination, t_pushswap *ps, char dest_c)
 {
 	t_node	*temp;
+	temp = *origin;
+	*origin = (*origin)->next;
+	if (list_size(ps->head_b) == 1 && dest_c == 'b' && ps->head_b->index == 0)
+		temp->next = NULL;
 
-	if (list_size(*origin) != 0)
-	{
-		temp = *origin;
-		*origin = (*origin)->next;
+	else if (list_size(*origin) != 0)
 		temp->next = *destination;
-		*destination = temp;
-		ps->nombre_op++;
-		ft_printf("p%c\n", dest_c);
-	}
+	*destination = temp;
+	ps->nombre_op++;
+	ft_printf("p%c\n", dest_c);
 }

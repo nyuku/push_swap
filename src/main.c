@@ -92,7 +92,7 @@ int	main(int ac, char **av)
 		big_sort(&ps);
 	else
 		small_sorting(&ps);
-//	printf("nombre de chiffre %d\n", list_size((ps.head_a)));
+
 //	print_nodes(&(ps.head_a), 'A');
 //	printf("\n\n----------------------\n\n");
 

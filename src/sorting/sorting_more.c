@@ -22,10 +22,12 @@ void	big_sort(t_pushswap *ps)
 		chunk = 20;
 	else
 		chunk = 70;
-	while (list_size(ps->head_a) > 0)
+	while (list_size(ps->head_a) >= 0 )
 	{
 		push_b_chunks(ps, chunk, chunk_done);
 		chunk_done++;
+		if (ps->head_a == NULL)
+			break;
 	}
 	b_to_a(ps);
 }
@@ -34,12 +36,12 @@ void	push_b_chunks(t_pushswap *ps, int chunks, int round)
 {
 	int	i;
 	int	limit;
-	int	border;
+	//int	border;
 
 	limit = round * chunks;
-	border = limit / 2;
+	//border = limit / 2;
 	i = 1;
-	while (i <= chunks)
+	while (i <= chunks) //list_size(ps->head_a) > 0
 	{
 		if (ps->head_a == NULL)
 			break ;
@@ -47,7 +49,9 @@ void	push_b_chunks(t_pushswap *ps, int chunks, int round)
 			(ps->head_a->index >= (limit - (chunks - 1))))
 		{
 			push(&(ps->head_a), &(ps->head_b), ps, 'b');
-			if ((list_size(ps->head_b) >= 2) && (ps->head_b->index > border))
+			//if ((list_size(ps->head_b) >= 3) && (ps->head_b->index > border)) //(list_size(ps->head_b) >= 2) decallage
+			//
+			if ((list_size(ps->head_b) >= 2) && (ps->head_b->index > (limit -10)))//(list_size(ps->head_b) >= 2) decallage
 			{
 				rotate_up(&(ps->head_b), ps, 'b');
 			}
@@ -65,7 +69,7 @@ void	b_to_a(t_pushswap *ps)
 	int	index_position;
 
 	upper = 0;
-	while (list_size(ps->head_b) > 1) // change != 0
+	while (list_size(ps->head_b) >= 1) //  > 1change != 0
 	{
 		max_index = get_max_index(ps->head_b);
 		index_position = find_index(ps->head_b, max_index);
@@ -80,6 +84,7 @@ void	b_to_a(t_pushswap *ps)
 		upper = 0;
 		push(&(ps->head_b), &(ps->head_a), ps, 'a');
 	}
+	//push(&(ps->head_b), &(ps->head_a), ps, 'a');//add en plus
 }
 
 
