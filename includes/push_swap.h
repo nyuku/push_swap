@@ -72,7 +72,7 @@ void    init_list(t_pushswap *ps);
 int fill_list_multi(t_pushswap *ps, char **av);
 int fill_list_mono(t_pushswap *ps);
 void	fill_list(t_pushswap *ps, char **av);
-void    print_nodes(t_node **node, char c);
+//void    print_nodes(t_node **node, char c);
 t_node *node_init(void);
 void    free_nodes(t_node **head);
 

@@ -91,13 +91,13 @@ int	main(int ac, char **av)
 		big_sort(&ps);
 	else
 		small_sorting(&ps);
-	printf("nombre de chiffre %d\n", list_size((ps.head_a)));
-	print_nodes(&(ps.head_a), 'A');
-	printf("\n\n----------------------\n\n");
+//	printf("nombre de chiffre %d\n", list_size((ps.head_a)));
+//	print_nodes(&(ps.head_a), 'A');
+//	printf("\n\n----------------------\n\n");
 
 	free_nodes(&(ps.head_a));
 	free_nodes(&(ps.head_b));
-	print_nodes(&(ps.head_b), 'B');
+//	print_nodes(&(ps.head_b), 'B');
 	free_structure(&ps);
 	return (0);
 }
